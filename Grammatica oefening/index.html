@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammatica Oefenen</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Raleway:wght@400&display=swap">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <style>
+    :root {
+      --brand: #ffa500;
+      --ok: #89c796;
+      --sand: #ffe4b5;
+      --muted: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+      transition: background-color 0.3s;
+    }
+
+    .container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 520px;
+      max-width: 100%;
+      padding-bottom: 40px;
+      position: relative;
+    }
+
+    .header {
+      background-color: var(--brand);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .content {
+      padding: 1rem;
+    }
+
+    .content h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    .content h3 {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    #app-title {
+      font-size: 24px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Buttons */
+    .start-button,
+    .topic-button,
+    .check-button,
+    .question-mark-button,
+    .try-again-button,
+    .random-button,
+    .back-small-button,
+    .back-button {
+      display: inline-block;
+      width: 100%;
+      padding: 0.85rem;
+      background-color: var(--brand);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background-color 0.25s, transform 0.15s;
+      margin-top: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .topic-button:hover,
+    .start-button:hover,
+    .check-button:hover,
+    .question-mark-button:hover,
+    .try-again-button:hover {
+      background-color: #e69500;
+    }
+
+    .topic-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .random-button {
+      background: linear-gradient(135deg, #ff9800, #64906d);
+    }
+
+    .random-button:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    .back-button {
+      background-color: #ccc;
+      color: #333;
+      width: auto;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .back-button:hover {
+      background-color: #bbb;
+    }
+
+    .back-small-button {
+      background-color: #ddd;
+      color: #333;
+      width: auto;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .back-small-button:hover {
+      background-color: #ccc;
+    }
+
+    .next-button {
+      background-color: #7e57c2;
+      color: #fff;
+    }
+
+    .next-button:hover {
+      background-color: #6a46b5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Chips */
+    .infinitive-verb,
+    .verb-tense {
+      display: inline-block;
+      padding: 0.5rem 0.8rem;
+      background-color: var(--ok);
+      color: #333;
+      border-radius: 6px;
+      margin: 0 8px 10px 0;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .sentence-display {
+      background-color: var(--sand);
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      min-height: 44px;
+      text-align: left;
+    }
+
+    #user-input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1.05rem;
+    }
+
+    .translation-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      background-color: var(--ok);
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 42px;
+    }
+
+    .hearts {
+      margin: 10px 0;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 5px;
+      background-color: green;
+      width: 0;
+      transition: width 0.3s;
+    }
+
+    .mistake-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    .mistake-list li {
+      background-color: #ffe4e4;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .final-score {
+      font-size: 1.2rem;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .correct-background {
+      background-color: #d4edda;
+    }
+
+    .incorrect-background {
+      background-color: #f8d7da;
+    }
+
+    .correct-answer {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .button-row .check-button,
+    .button-row .question-mark-button {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    /* Grids */
+    #top-categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    #level-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    /* Toggles */
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--muted);
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 0.6rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #f44336;
+      transition: 0.25s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.25s;
+      border-radius: 50%;
+    }
+
+    .switch input:checked+.slider {
+      background-color: #4caf50;
+    }
+
+    .switch input:checked+.slider:before {
+      transform: translateX(22px);
+    }
+
+    /* De/Het emphasis */
+    /* De/het layout */
+    .dehet-word {
+      text-align: center;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 6.5vw, 3rem);
+      letter-spacing: 0.5px;
+      margin: 6px 0 18px;
+    }
+
+    .dehet-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin: 6px 0 22px;
+    }
+
+    .dehet-btn {
+      background: var(--ok);
+      color: #fff;
+      border: 0;
+      border-radius: 20px;
+      width: 160px;
+      height: 90px;
+      font-size: 2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+      transition: transform .12s ease, filter .12s ease;
+    }
+
+    .dehet-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(0.97);
+    }
+
+    .dehet-info {
+      background: var(--sand);
+      border-radius: 18px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .dehet-label {
+      font-weight: 800;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .dehet-value {
+      font-size: 1.2rem;
+    }
+
+    .setting-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0 16px;
+    }
+
+    /* grey tile (same look as your toggle rows) */
+    .setting-tile {
+      background: #efefef;
+      /* same grey as the toggles */
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .setting-title {
+      font-weight: 700;
+    }
+
+    .setting-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* range styling (neutral, fits in the tile) */
+    .setting-range {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 240px;
+      height: 6px;
+      background: #d6d6d6;
+      /* track */
+      border-radius: 999px;
+      outline: none;
+    }
+
+    .setting-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      /* thumb */
+      border: 3px solid #ff9800;
+      /* accent; change to your brand color */
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    }
+
+    .setting-range::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #3b82f6;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    }
+
+    .setting-range::-moz-range-track {
+      height: 6px;
+      background: #d6d6d6;
+      border-radius: 999px;
+    }
+
+    /* value */
+    .range-value {
+      min-width: 2.5ch;
+      text-align: right;
+      font-weight: 600;
+    }
+  </style>
+
+  </style>
+</head>
+
+<body id="body">
+  <div class="container">
+    <div class="header">
+      <h1 id="app-title">Grammatica Oefenen</h1>
+    </div>
+
+
+    <!-- Welcome -->
+    <div class="content" id="welcome-screen">
+      <h2>Zullen we samen grammatica oefenen?</h2>
+
+      <div class="toggle-row">
+        <span>Confetti mode</span>
+        <label class="switch">
+          <!-- standaard UIT -->
+          <input type="checkbox" id="confetti-switch">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <span>Vertaling tonen</span>
+        <label class="switch">
+          <!-- standaard AAN -->
+          <input type="checkbox" id="translation-switch" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-tile">
+        <div class="setting-title">Aantal vragen</div>
+
+        <div class="setting-actions">
+          <input type="range" id="question-slider" min="10" max="50" step="5" value="30" class="setting-range"
+            aria-label="Aantal vragen" />
+          <span id="question-count" class="range-value">30</span>
+        </div>
+      </div>
+
+
+
+      <button class="start-button" id="welcome-start-button">Start</button>
+    </div>
+
+    <!-- Topic menu -->
+    <div class="content hidden" id="topic-screen">
+      <h2>Essentials</h2>
+
+      <!-- Top categories -->
+      <div id="top-categories">
+        <button class="topic-button" data-category="dehet">de of het ▸</button>
+        <button class="topic-button" data-category="verbs">werkwoorden ▸</button>
+      </div>
+
+      <!-- Levels -->
+      <h3>Per Cursus Niveau</h3>
+      <div id="level-buttons"></div>
+
+      <button class="random-button" id="random-practice-button">🎲 Verrassingsronde</button>
+      <!-- <button type="button" class="back-small-button" id="back-to-welcome">← Terug naar start</button> -->
+      <button type="button" class="back-small-button icon-only" id="back-to-welcome">
+        <i class="fa-solid fa-house"></i>
+      </button>
+
+    </div>
+
+    <!-- Level submenu -->
+    <div class="content hidden" id="level-submenu">
+
+      <h2 id="level-title">Level</h2>
+      <div id="level-topic-buttons" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"></div>
+      <div class="top-bar">
+        <button type="button" class="back-button" id="back-to-levels"><i class="fa-solid fa-arrow-left"></i></button>
+        <!-- <button type="button" class="back-small-button" id="level-back-to-welcome">← Terug naar start</button> -->
+        <button type="button" class="back-small-button icon-only" id="level-back-to-welcome"><i class="fa-solid fa-house"></i></button>
+      </div>
+    </div>
+
+    <!-- Werkwoorden submenu -->
+    <div class="content hidden" id="verbs-submenu">
+      <h2>Kies de werkwoordstijden</h2>
+      <div class="verb-options">
+        <label><input type="checkbox" value="1" checked> Tegenwoordige Tijd - Nederlands Level 1</label><br>
+        <label><input type="checkbox" value="2"> Perfectum - Nederlands Level 2</label><br>
+        <label><input type="checkbox" value="3"> Imperfectum - Nederlands Level 3</label><br>
+        <label><input type="checkbox" value="13"> Plusquamperfectum - Nederlands Level 5</label>
+      </div>
+      <button class="start-button" id="start-verbs-button">Begin met oefenen</button>
+      <button class="back-button" id="back-to-topics"><i class="fa-solid fa-arrow-left"></i></button>
+    </div>
+
+    <!-- De/Het mini-game -->
+    <div class="content hidden" id="dehet-screen">
+
+      <!-- Start pane -->
+      <div id="dehet-start-pane">
+        <button class="start-button" id="dehet-start-btn">Start</button>
+      </div>
+
+      <!-- Game pane -->
+      <div id="dehet-game-pane" class="hidden">
+        <h1 id="dehet-word" class="dehet-word">woord</h1>
+
+        <div class="dehet-buttons">
+          <button class="dehet-btn" id="dehet-de-btn">de</button>
+          <button class="dehet-btn" id="dehet-het-btn">het</button>
+        </div>
+
+        <div class="dehet-info">
+          <div class="dehet-col">
+            <div class="dehet-label">Vertaling</div>
+            <div class="dehet-value" id="dehet-translation-col">
+              <span id="dehet-translation">sun</span>
+            </div>
+          </div>
+          <div class="dehet-col">
+            <div class="dehet-label">Punten</div>
+            <div class="dehet-value"><span id="dehet-score">0</span></div>
+          </div>
+          <div class="dehet-col">
+            <div class="dehet-label">Levens</div>
+            <div class="dehet-value" id="dehet-lives">🧡🧡🧡</div>
+          </div>
+        </div>
+
+        <div class="correct-answer hidden" id="dehet-message"></div>
+        <button id="dehet-try-btn" class="start-button hidden">Probeer Opnieuw</button>
+        <ul class="mistake-list" id="dehet-wrong-list" style="display:none;margin-top:8px;"></ul>
+      </div>
+
+      <div class="top-bar">
+        <button type="button" class="back-button" id="dehet-back-to-menu"><i class="fa-solid fa-arrow-left"></i></button>
+        <!-- <button type="button" class="back-small-button" id="dehet-back-to-welcome">← Terug naar start</button> -->
+        <button type="button" class="back-small-button icon-only" id="dehet-back-to-welcome"><i class="fa-solid fa-house"></i></button>
+      </div>
+    </div> <!-- ▲ CLOSE dehet-screen here -->
+
+    <!-- Practice -->
+    <div class="content hidden" id="practice-screen">
+
+      <div id="sentence-info">
+        <div class="infinitive-verb" id="infinitive-verb"></div>
+        <div class="verb-tense" id="verb-tense"></div>
+      </div>
+
+      <div class="sentence-display" id="sentence-display"></div>
+      <input type="text" id="user-input" placeholder="Typ je antwoord hier">
+      <div class="translation-info" id="translation-row"><span>🇬🇧</span> <span id="translation"></span></div>
+      <div class="correct-answer hidden" id="correct-answer"></div>
+      <div class="hearts" id="lives">🧡🧡🧡</div>
+
+      <div class="button-row">
+        <button type="button" class="check-button" id="check-btn">Controleren</button>
+        <button type="button" class="question-mark-button" id="hint-btn" disabled>?</button>
+      </div>
+      <div class="top-bar">
+        <button type="button" class="back-button" id="back-to-menu"><i class="fa-solid fa-arrow-left"></i></button>
+        <!-- <button type="button" class="back-small-button" id="back-to-welcome-small">← Terug naar start</button> -->
+        <button type="button" class="back-small-button icon-only" id="back-to-welcome-small"><i class="fa-solid fa-house"></i></button>
+      </div>
+    </div>
+
+    <!-- Final -->
+    <div class="content hidden" id="final-screen">
+      <div class="final-score" id="final-score"></div>
+      <ul class="mistake-list" id="mistake-list"></ul>
+      <button type="button" class="try-again-button" id="again-btn">Opnieuw</button>
+    </div>
+
+    <!-- Progress bar stays at container bottom -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+
+    <!-- Modules -->
+    <script src="./data/topics.js"></script>
+    <script src="./data/dehet.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
