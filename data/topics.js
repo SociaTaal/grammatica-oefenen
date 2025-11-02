@@ -1,4 +1,5 @@
 // topics.js  (no exports; defines globals)
+// 1,2,3,13 voor werkwoorden
 window.TOPIC_LABELS = {
     4: "Meervoud",
     5: "Adjectief, comparatief en superlatief",
@@ -8,7 +9,18 @@ window.TOPIC_LABELS = {
     9: "Conjuncties en bijzinnen",
     10: "Indirecte rede",
     11: "Relatieve voornaamwoorden",
-    12: "Werkwoorden met vaste preposities"
+    12: "Werkwoorden met vaste preposities",
+    14: "Persoonlijke vnw. subject (ik/jij/hij/wij)",
+    15: "Persoonlijke vnw. object (mij/jou/hem/haar/ons)",
+    16: "Bezittelijke vnw. (mijn/jouw/zijn/haar/hun)",
+    17: "De klok",
+    18: "Preposities en tijd",
+    19: "Adjectieven (+e of niet)",
+    20: "Diminutief",
+    21: "zullen + wel",
+    22: "Aanwijzende vnw. Zelfstandig",
+    23: "Er + prepositie",
+    24: "om ... te"
 };
 
 window.topicSentences = {
@@ -542,117 +554,117 @@ window.topicSentences = {
 
     ],
     9: [
-{ infinitive: "conjunctie", sentence: "Ik ga niet mee, ... ik moet werken.", translation: "I am not coming along because I have to work.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "We wilden buiten zitten, ... het regende.", translation: "We wanted to sit outside, but it was raining.", answer: "maar" },
-{ infinitive: "conjunctie", sentence: "Bel me ... je klaar bent.", translation: "Call me when you are ready.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "Hij bleef thuis, ... hij geen fiets had.", translation: "He stayed home because he didn't have a bike.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Ik ga niet sporten, ... ik ben moe.", translation: "I am not going to exercise because I am tired.", answer: "want" },
-{ infinitive: "conjunctie", sentence: "Zij leest een boek, ... hij tv kijkt.", translation: "She reads a book while he watches TV.", answer: "terwijl" },
-{ infinitive: "conjunctie", sentence: "We wachten hier, ... jij terugkomt.", translation: "We wait here until you come back.", answer: "totdat" },
-{ infinitive: "conjunctie", sentence: "Ik weet niet ... hij de sleutel heeft.", translation: "I don’t know whether he has the key.", answer: "of" },
-{ infinitive: "conjunctie", sentence: "We gingen naar binnen, ... het donker werd.", translation: "We went inside when it became dark.", answer: "toen" },
-{ infinitive: "conjunctie", sentence: "Neem een jas mee, ... het koud wordt.", translation: "Take a coat so that it doesn’t get cold for you.", answer: "zodat" },
+        { infinitive: "conjunctie", sentence: "Ik ga niet mee, ... ik moet werken.", translation: "I am not coming along because I have to work.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "We wilden buiten zitten, ... het regende.", translation: "We wanted to sit outside, but it was raining.", answer: "maar" },
+        { infinitive: "conjunctie", sentence: "Bel me ... je klaar bent.", translation: "Call me when you are ready.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Hij bleef thuis, ... hij geen fiets had.", translation: "He stayed home because he didn't have a bike.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Ik ga niet sporten, ... ik ben moe.", translation: "I am not going to exercise because I am tired.", answer: "want" },
+        { infinitive: "conjunctie", sentence: "Zij leest een boek, ... hij tv kijkt.", translation: "She reads a book while he watches TV.", answer: "terwijl" },
+        { infinitive: "conjunctie", sentence: "We wachten hier, ... jij terugkomt.", translation: "We wait here until you come back.", answer: "totdat" },
+        { infinitive: "conjunctie", sentence: "Ik weet niet ... hij de sleutel heeft.", translation: "I don’t know whether he has the key.", answer: "of" },
+        { infinitive: "conjunctie", sentence: "We gingen naar binnen, ... het donker werd.", translation: "We went inside when it became dark.", answer: "toen" },
+        { infinitive: "conjunctie", sentence: "Neem een jas mee, ... het koud wordt.", translation: "Take a coat so that it doesn’t get cold for you.", answer: "zodat" },
 
-{ infinitive: "conjunctie", sentence: "Hij werkt hard, ... hij een bonus wil.", translation: "He works hard because he wants a bonus.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Ik ga wandelen, ... het regent niet.", translation: "I am going for a walk if it doesn’t rain.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "Ze kwam te laat, ... de bus niet reed.", translation: "She was late because the bus didn’t run.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Hij belt me, ... hij hulp nodig heeft.", translation: "He calls me when he needs help.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "We blijven binnen, ... het stormt.", translation: "We stay inside because it’s storming.", answer: "want" },
-{ infinitive: "conjunctie", sentence: "Ik ga studeren, ... jij kookt.", translation: "I will study while you cook.", answer: "terwijl" },
-{ infinitive: "conjunctie", sentence: "Ze oefent elke dag, ... ze beter wordt.", translation: "She practices every day so that she gets better.", answer: "zodat" },
-{ infinitive: "conjunctie", sentence: "Hij bleef, ... hij geen kaartje had.", translation: "He stayed because he didn’t have a ticket.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "We vertrekken, ... iedereen er is.", translation: "We leave as soon as everyone is there.", answer: "zodra" },
-{ infinitive: "conjunctie", sentence: "Ik ga naar bed, ... ik erg moe ben.", translation: "I am going to bed because I am very tired.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Hij werkt hard, ... hij een bonus wil.", translation: "He works hard because he wants a bonus.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Ik ga wandelen, ... het regent niet.", translation: "I am going for a walk if it doesn’t rain.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Ze kwam te laat, ... de bus niet reed.", translation: "She was late because the bus didn’t run.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Hij belt me, ... hij hulp nodig heeft.", translation: "He calls me when he needs help.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "We blijven binnen, ... het stormt.", translation: "We stay inside because it’s storming.", answer: "want" },
+        { infinitive: "conjunctie", sentence: "Ik ga studeren, ... jij kookt.", translation: "I will study while you cook.", answer: "terwijl" },
+        { infinitive: "conjunctie", sentence: "Ze oefent elke dag, ... ze beter wordt.", translation: "She practices every day so that she gets better.", answer: "zodat" },
+        { infinitive: "conjunctie", sentence: "Hij bleef, ... hij geen kaartje had.", translation: "He stayed because he didn’t have a ticket.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "We vertrekken, ... iedereen er is.", translation: "We leave as soon as everyone is there.", answer: "zodra" },
+        { infinitive: "conjunctie", sentence: "Ik ga naar bed, ... ik erg moe ben.", translation: "I am going to bed because I am very tired.", answer: "omdat" },
 
-{ infinitive: "conjunctie", sentence: "Ze liep door, ... het hard regende.", translation: "She kept walking although it was raining hard.", answer: "hoewel" },
-{ infinitive: "conjunctie", sentence: "We wachten buiten, ... jij belt.", translation: "We wait outside until you call.", answer: "totdat" },
-{ infinitive: "conjunctie", sentence: "Ik weet niet ... dit klopt.", translation: "I don’t know whether this is correct.", answer: "of" },
-{ infinitive: "conjunctie", sentence: "Hij kookte, ... zij de tafel dekte.", translation: "He cooked while she set the table.", answer: "terwijl" },
-{ infinitive: "conjunctie", sentence: "Ze bleef thuis, ... ze ziek was.", translation: "She stayed home because she was ill.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Je mag mee, ... je stil bent.", translation: "You may come along if you are quiet.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "Ik vertrek, ... de vergadering klaar is.", translation: "I leave after the meeting is finished.", answer: "nadat" },
-{ infinitive: "conjunctie", sentence: "We gaan naar binnen, ... het koud is.", translation: "We go inside because it is cold.", answer: "want" },
-{ infinitive: "conjunctie", sentence: "Hij oefent veel, ... hij wil slagen.", translation: "He practices a lot because he wants to pass.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Ze bleef kijken, ... de film eindigde.", translation: "She kept watching until the film ended.", answer: "totdat" },
+        { infinitive: "conjunctie", sentence: "Ze liep door, ... het hard regende.", translation: "She kept walking although it was raining hard.", answer: "hoewel" },
+        { infinitive: "conjunctie", sentence: "We wachten buiten, ... jij belt.", translation: "We wait outside until you call.", answer: "totdat" },
+        { infinitive: "conjunctie", sentence: "Ik weet niet ... dit klopt.", translation: "I don’t know whether this is correct.", answer: "of" },
+        { infinitive: "conjunctie", sentence: "Hij kookte, ... zij de tafel dekte.", translation: "He cooked while she set the table.", answer: "terwijl" },
+        { infinitive: "conjunctie", sentence: "Ze bleef thuis, ... ze ziek was.", translation: "She stayed home because she was ill.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Je mag mee, ... je stil bent.", translation: "You may come along if you are quiet.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Ik vertrek, ... de vergadering klaar is.", translation: "I leave after the meeting is finished.", answer: "nadat" },
+        { infinitive: "conjunctie", sentence: "We gaan naar binnen, ... het koud is.", translation: "We go inside because it is cold.", answer: "want" },
+        { infinitive: "conjunctie", sentence: "Hij oefent veel, ... hij wil slagen.", translation: "He practices a lot because he wants to pass.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Ze bleef kijken, ... de film eindigde.", translation: "She kept watching until the film ended.", answer: "totdat" },
 
-{ infinitive: "conjunctie", sentence: "Ik ga niet, ... ik geen tijd heb.", translation: "I’m not going because I don’t have time.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "We nemen een taxi, ... het te ver is.", translation: "We take a taxi because it is too far.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Je krijgt een bericht, ... het pakket verstuurd is.", translation: "You’ll get a message after the package has been sent.", answer: "nadat" },
-{ infinitive: "conjunctie", sentence: "Ze bleef vriendelijk, ... hij onbeleefd was.", translation: "She remained friendly although he was rude.", answer: "hoewel" },
-{ infinitive: "conjunctie", sentence: "We ontbijten, ... we naar werk gaan.", translation: "We have breakfast before we go to work.", answer: "voordat" },
-{ infinitive: "conjunctie", sentence: "Ik zeg niets, ... jij klaar bent.", translation: "I won’t say anything until you are ready.", answer: "totdat" },
-{ infinitive: "conjunctie", sentence: "Hij slaagde, ... hij hard had gewerkt.", translation: "He passed because he had worked hard.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "We blijven thuis, ... het sneeuwt.", translation: "We are staying home because it is snowing.", answer: "want" },
-{ infinitive: "conjunctie", sentence: "Ze belt me, ... ze onderweg is.", translation: "She calls me when she is on the way.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "Ik help je, ... je me vraagt.", translation: "I will help you if you ask me.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Ik ga niet, ... ik geen tijd heb.", translation: "I’m not going because I don’t have time.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "We nemen een taxi, ... het te ver is.", translation: "We take a taxi because it is too far.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Je krijgt een bericht, ... het pakket verstuurd is.", translation: "You’ll get a message after the package has been sent.", answer: "nadat" },
+        { infinitive: "conjunctie", sentence: "Ze bleef vriendelijk, ... hij onbeleefd was.", translation: "She remained friendly although he was rude.", answer: "hoewel" },
+        { infinitive: "conjunctie", sentence: "We ontbijten, ... we naar werk gaan.", translation: "We have breakfast before we go to work.", answer: "voordat" },
+        { infinitive: "conjunctie", sentence: "Ik zeg niets, ... jij klaar bent.", translation: "I won’t say anything until you are ready.", answer: "totdat" },
+        { infinitive: "conjunctie", sentence: "Hij slaagde, ... hij hard had gewerkt.", translation: "He passed because he had worked hard.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "We blijven thuis, ... het sneeuwt.", translation: "We are staying home because it is snowing.", answer: "want" },
+        { infinitive: "conjunctie", sentence: "Ze belt me, ... ze onderweg is.", translation: "She calls me when she is on the way.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Ik help je, ... je me vraagt.", translation: "I will help you if you ask me.", answer: "als" },
 
-{ infinitive: "conjunctie", sentence: "Ze ging naar huis, ... ze klaar was.", translation: "She went home after she was finished.", answer: "nadat" },
-{ infinitive: "conjunctie", sentence: "We bleven buiten, ... het donker werd.", translation: "We stayed outside until it became dark.", answer: "totdat" },
-{ infinitive: "conjunctie", sentence: "Hij kwam niet, ... hij ziek was.", translation: "He didn’t come because he was ill.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Ik ga weg, ... ik nog moet werken.", translation: "I am leaving even though I still have to work.", answer: "hoewel" },
-{ infinitive: "conjunctie", sentence: "We vertrekken, ... iedereen aanwezig is.", translation: "We will leave when everyone is present.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "Ze fluisterde, ... de baby sliep.", translation: "She whispered because the baby was sleeping.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "Ik blijf, ... jij ook blijft.", translation: "I will stay if you also stay.", answer: "als" },
-{ infinitive: "conjunctie", sentence: "Hij viel, ... hij te snel liep.", translation: "He fell because he walked too fast.", answer: "omdat" },
-{ infinitive: "conjunctie", sentence: "We begonnen pas, ... iedereen zat.", translation: "We only started after everyone was seated.", answer: "nadat" },
-{ infinitive: "conjunctie", sentence: "Ik ga niet mee, ... het te duur is.", translation: "I’m not going along because it is too expensive.", answer: "omdat" }
+        { infinitive: "conjunctie", sentence: "Ze ging naar huis, ... ze klaar was.", translation: "She went home after she was finished.", answer: "nadat" },
+        { infinitive: "conjunctie", sentence: "We bleven buiten, ... het donker werd.", translation: "We stayed outside until it became dark.", answer: "totdat" },
+        { infinitive: "conjunctie", sentence: "Hij kwam niet, ... hij ziek was.", translation: "He didn’t come because he was ill.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Ik ga weg, ... ik nog moet werken.", translation: "I am leaving even though I still have to work.", answer: "hoewel" },
+        { infinitive: "conjunctie", sentence: "We vertrekken, ... iedereen aanwezig is.", translation: "We will leave when everyone is present.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Ze fluisterde, ... de baby sliep.", translation: "She whispered because the baby was sleeping.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "Ik blijf, ... jij ook blijft.", translation: "I will stay if you also stay.", answer: "als" },
+        { infinitive: "conjunctie", sentence: "Hij viel, ... hij te snel liep.", translation: "He fell because he walked too fast.", answer: "omdat" },
+        { infinitive: "conjunctie", sentence: "We begonnen pas, ... iedereen zat.", translation: "We only started after everyone was seated.", answer: "nadat" },
+        { infinitive: "conjunctie", sentence: "Ik ga niet mee, ... het te duur is.", translation: "I’m not going along because it is too expensive.", answer: "omdat" }
 
     ],
     10: [
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij zegt ... hij later komt.", translation: "He says that he will come later.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Zij denkt ... het morgen regent.", translation: "She thinks that it will rain tomorrow.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We hoorden ... de winkel dicht is.", translation: "We heard that the shop is closed.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik weet ... hij geen tijd heeft.", translation: "I know that he has no time.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij vertelde ... hij ziek was.", translation: "He told that he was ill.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze gelooft ... dit de beste keuze is.", translation: "She believes that this is the best choice.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We hopen ... het snel beter gaat.", translation: "We hope that it will get better soon.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik merkte ... ze zenuwachtig was.", translation: "I noticed that she was nervous.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "De docent legt uit ... de toets volgende week is.", translation: "The teacher explains that the test is next week.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze zei ... hij al vertrokken was.", translation: "She said that he had already left.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij zegt ... hij later komt.", translation: "He says that he will come later.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Zij denkt ... het morgen regent.", translation: "She thinks that it will rain tomorrow.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We hoorden ... de winkel dicht is.", translation: "We heard that the shop is closed.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik weet ... hij geen tijd heeft.", translation: "I know that he has no time.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij vertelde ... hij ziek was.", translation: "He told that he was ill.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze gelooft ... dit de beste keuze is.", translation: "She believes that this is the best choice.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We hopen ... het snel beter gaat.", translation: "We hope that it will get better soon.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik merkte ... ze zenuwachtig was.", translation: "I noticed that she was nervous.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "De docent legt uit ... de toets volgende week is.", translation: "The teacher explains that the test is next week.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze zei ... hij al vertrokken was.", translation: "She said that he had already left.", answer: "dat" },
 
-{ infinitive: "dat, of, vraagwoord", sentence: "Kun je zeggen ... je vanavond komt?", translation: "Can you say whether you are coming tonight?", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We vragen ... de trein nog rijdt.", translation: "We ask whether the train is still running.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik twijfel ... hij de weg weet.", translation: "I doubt whether he knows the way.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze wil weten ... het lokaal vrij is.", translation: "She wants to know whether the classroom is free.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij vraagt ... jij al klaar bent.", translation: "He asks whether you are ready.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We horen graag ... jullie mee willen doen.", translation: "We’d like to hear whether you want to join.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik weet niet ... dit genoeg is.", translation: "I don’t know whether this is enough.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... hij een auto heeft.", translation: "She asks whether he has a car.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Kun je controleren ... de deur op slot is?", translation: "Can you check whether the door is locked?", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik twijfel ... we op tijd komen.", translation: "I doubt whether we will arrive on time.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Kun je zeggen ... je vanavond komt?", translation: "Can you say whether you are coming tonight?", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We vragen ... de trein nog rijdt.", translation: "We ask whether the train is still running.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik twijfel ... hij de weg weet.", translation: "I doubt whether he knows the way.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze wil weten ... het lokaal vrij is.", translation: "She wants to know whether the classroom is free.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij vraagt ... jij al klaar bent.", translation: "He asks whether you are ready.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We horen graag ... jullie mee willen doen.", translation: "We’d like to hear whether you want to join.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik weet niet ... dit genoeg is.", translation: "I don’t know whether this is enough.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... hij een auto heeft.", translation: "She asks whether he has a car.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Kun je controleren ... de deur op slot is?", translation: "Can you check whether the door is locked?", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik twijfel ... we op tijd komen.", translation: "I doubt whether we will arrive on time.", answer: "of" },
 
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik vraag me af ... hij komt.", translation: "I wonder when he is coming.", answer: "wanneer" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij wil weten ... jij woont.", translation: "He wants to know where you live.", answer: "waar" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... je zo snel klaar was.", translation: "She asks how you were ready so quickly.", answer: "hoe" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We vragen ... dit apparaat werkt.", translation: "We ask how this device works.", answer: "hoe" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik wil weten ... er nog brood is.", translation: "I want to know whether there is still bread.", answer: "of" }, // (bewust extra 'of')
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij vraagt ... dat geluid betekent.", translation: "He asks what that sound means.", answer: "wat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Zij wil weten ... hier mag parkeren.", translation: "She wants to know who may park here.", answer: "wie" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik vraag me af ... je dat doet.", translation: "I wonder how you do that.", answer: "hoe" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Kun je zeggen ... de sleutel ligt?", translation: "Can you say where the key is lying?", answer: "waar" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We willen weten ... de les begint.", translation: "We want to know when the class starts.", answer: "wanneer" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik vraag me af ... hij komt.", translation: "I wonder when he is coming.", answer: "wanneer" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij wil weten ... jij woont.", translation: "He wants to know where you live.", answer: "waar" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... je zo snel klaar was.", translation: "She asks how you were ready so quickly.", answer: "hoe" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We vragen ... dit apparaat werkt.", translation: "We ask how this device works.", answer: "hoe" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik wil weten ... er nog brood is.", translation: "I want to know whether there is still bread.", answer: "of" }, // (bewust extra 'of')
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij vraagt ... dat geluid betekent.", translation: "He asks what that sound means.", answer: "wat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Zij wil weten ... hier mag parkeren.", translation: "She wants to know who may park here.", answer: "wie" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik vraag me af ... je dat doet.", translation: "I wonder how you do that.", answer: "hoe" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Kun je zeggen ... de sleutel ligt?", translation: "Can you say where the key is lying?", answer: "waar" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We willen weten ... de les begint.", translation: "We want to know when the class starts.", answer: "wanneer" },
 
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij vroeg ... je gisteren hebt gedaan.", translation: "He asked what you did yesterday.", answer: "wat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... ze moet betalen.", translation: "She asks how much she has to pay.", answer: "hoeveel" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik wil weten ... je zo vroeg wegging.", translation: "I want to know why you left so early.", answer: "waarom" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We vragen ... hij hier is gekomen.", translation: "We ask how he came here.", answer: "hoe" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij vroeg ... dit adres precies is.", translation: "He asked what this address exactly is.", answer: "wat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze wil weten ... je met de trein reist.", translation: "She wants to know why you travel by train.", answer: "waarom" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik vraag me af ... je dat bedoelt.", translation: "I wonder what you mean by that.", answer: "wat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij wil weten ... je morgen vrij bent.", translation: "He wants to know whether you are free tomorrow.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Kun je vertellen ... hij woont?", translation: "Can you tell where he lives?", answer: "waar" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Zij vraagt ... de afspraak duurt.", translation: "She asks how long the appointment lasts.", answer: "hoelang" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij vroeg ... je gisteren hebt gedaan.", translation: "He asked what you did yesterday.", answer: "wat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... ze moet betalen.", translation: "She asks how much she has to pay.", answer: "hoeveel" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik wil weten ... je zo vroeg wegging.", translation: "I want to know why you left so early.", answer: "waarom" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We vragen ... hij hier is gekomen.", translation: "We ask how he came here.", answer: "hoe" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij vroeg ... dit adres precies is.", translation: "He asked what this address exactly is.", answer: "wat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze wil weten ... je met de trein reist.", translation: "She wants to know why you travel by train.", answer: "waarom" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik vraag me af ... je dat bedoelt.", translation: "I wonder what you mean by that.", answer: "wat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij wil weten ... je morgen vrij bent.", translation: "He wants to know whether you are free tomorrow.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Kun je vertellen ... hij woont?", translation: "Can you tell where he lives?", answer: "waar" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Zij vraagt ... de afspraak duurt.", translation: "She asks how long the appointment lasts.", answer: "hoelang" },
 
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij zei ... hij het later doorstuurt.", translation: "He said that he will forward it later.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze hoopt ... je kunt komen.", translation: "She hopes that you can come.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik denk ... dit genoeg oefening is.", translation: "I think that this is enough practice.", answer: "dat" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We twijfelen ... de winkel nog open is.", translation: "We doubt whether the shop is still open.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... de bus hier stopt.", translation: "She asks whether the bus stops here.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ik wil weten ... jij dezelfde cursus volgt.", translation: "I want to know whether you take the same course.", answer: "of" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Hij vraagt ... je met wie je komt.", translation: "He asks with whom you are coming.", answer: "met wie" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Kun je uitleggen ... je dat hebt gedaan?", translation: "Can you explain how you did that?", answer: "hoe" },
-{ infinitive: "dat, of, vraagwoord", sentence: "Ze vroeg ... je vandaan komt.", translation: "She asked where you come from.", answer: "waar" },
-{ infinitive: "dat, of, vraagwoord", sentence: "We vragen ... we links of rechts moeten.", translation: "We ask whether we should go left or right.", answer: "of" }
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij zei ... hij het later doorstuurt.", translation: "He said that he will forward it later.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze hoopt ... je kunt komen.", translation: "She hopes that you can come.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik denk ... dit genoeg oefening is.", translation: "I think that this is enough practice.", answer: "dat" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We twijfelen ... de winkel nog open is.", translation: "We doubt whether the shop is still open.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze vraagt ... de bus hier stopt.", translation: "She asks whether the bus stops here.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ik wil weten ... jij dezelfde cursus volgt.", translation: "I want to know whether you take the same course.", answer: "of" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Hij vraagt ... je met wie je komt.", translation: "He asks with whom you are coming.", answer: "met wie" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Kun je uitleggen ... je dat hebt gedaan?", translation: "Can you explain how you did that?", answer: "hoe" },
+        { infinitive: "dat, of, vraagwoord", sentence: "Ze vroeg ... je vandaan komt.", translation: "She asked where you come from.", answer: "waar" },
+        { infinitive: "dat, of, vraagwoord", sentence: "We vragen ... we links of rechts moeten.", translation: "We ask whether we should go left or right.", answer: "of" }
 
     ],
     11: [
@@ -821,5 +833,591 @@ window.topicSentences = {
         { infinitive: "afzeggen", sentence: "Hij ... de afspraak al ... toen de file begon.", translation: "He had already canceled the appointment when the traffic jam started.", answer: "had afgezegd", tense: "plusquamperfectum" },
         { infinitive: "herinneren (zich)", sentence: "Ik ... me dat ... voordat jij het zei.", translation: "I had remembered that before you said it.", answer: "had me herinnerd", tense: "plusquamperfectum" },
         { infinitive: "vergeten", sentence: "Zij ... het woord al ... voordat de docent het herhaalde.", translation: "She had already forgotten the word before the teacher repeated it.", answer: "had vergeten", tense: "plusquamperfectum" }
+    ],
+    14: [
+        { infinitive: "persoonlijk vnw subject", sentence: "Mijn naam is Koen. ... ben 27 jaar oud.", translation: "My name is Koen. I am 27 years old.", answer: "ik", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... woont in Rotterdam, toch?", translation: "You live in Rotterdam, right?", answer: "jij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... spreekt al goed Nederlands.", translation: "You already speak Dutch well.", answer: "je", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Waar werk ... op dit moment?", translation: "Where do you work at the moment?", answer: "jij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... gaan morgen naar de markt.", translation: "We are going to the market tomorrow.", answer: "wij", tense: "persoonlijk vnw subject" },
+
+        { infinitive: "persoonlijk vnw subject", sentence: "Vanavond koken ... samen pasta.", translation: "We are cooking pasta together tonight.", answer: "we", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... heeft een afspraak om tien uur.", translation: "You (formal) have an appointment at ten o’clock.", answer: "u", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... werkt als verpleegkundige.", translation: "He works as a nurse.", answer: "hij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... leest elke avond een boek.", translation: "She reads a book every evening.", answer: "zij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... heeft vandaag vrij.", translation: "She has a day off today.", answer: "ze", tense: "persoonlijk vnw subject" },
+
+        { infinitive: "persoonlijk vnw subject", sentence: "... regent bijna nooit in juli.", translation: "It hardly ever rains in July.", answer: "het", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... wonen in een rustig dorp.", translation: "We live in a quiet village.", answer: "wij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... fietsen elke dag naar school.", translation: "We cycle to school every day.", answer: "we", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... komen uit verschillende landen.", translation: "You (plural) come from different countries.", answer: "jullie", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... spelen na school voetbal.", translation: "They play football after school.", answer: "zij", tense: "persoonlijk vnw subject" },
+
+        { infinitive: "persoonlijk vnw subject", sentence: "... werken in hetzelfde team.", translation: "They work in the same team.", answer: "ze", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Hoe laat sta ... meestal op?", translation: "What time do you usually get up?", answer: "je", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... studeren voor het examen Nederlands.", translation: "We are studying for the Dutch exam.", answer: "wij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Welke sport doe ... graag?", translation: "Which sport do you like to do?", answer: "jij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "In het weekend bakken ... pannenkoeken.", translation: "At the weekend we bake pancakes.", answer: "we", tense: "persoonlijk vnw subject" },
+
+        { infinitive: "persoonlijk vnw subject", sentence: "Waar kom ... precies vandaan?", translation: "Where are you from exactly?", answer: "je", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... leer Nederlands bij Sociataal.", translation: "I am learning Dutch at Sociataal.", answer: "ik", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... kookt vaak Italiaans.", translation: "He often cooks Italian food.", answer: "hij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... gaat morgen vroeg naar werk.", translation: "She is going to work early tomorrow.", answer: "zij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... is vandaag erg druk in de stad.", translation: "It is very busy in the city today.", answer: "het", tense: "persoonlijk vnw subject" },
+
+        { infinitive: "persoonlijk vnw subject", sentence: "... hebben een grote tuin.", translation: "You (plural) have a big garden.", answer: "jullie", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... komen om acht uur aan.", translation: "They arrive at eight o’clock.", answer: "zij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... plannen een korte vakantie.", translation: "We are planning a short holiday.", answer: "we", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... kunt hier parkeren.", translation: "You (formal) can park here.", answer: "u", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "... neem de trein naar Utrecht.", translation: "I take the train to Utrecht.", answer: "ik", tense: "persoonlijk vnw subject" },
+
+        // nadruk op JIJ / WIJ
+        { infinitive: "persoonlijk vnw subject", sentence: "Niet hij maar ... haalt de kinderen op.", translation: "Not he but you pick up the kids.", answer: "jij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Vandaag bel ... de huisarts, niet ik.", translation: "Today you call the GP, not me.", answer: "jij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Als er iemand kan helpen, dan ben ... het.", translation: "If anyone can help, then it is you.", answer: "jij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Niet zij maar ... presenteren het plan.", translation: "Not they but we present the plan.", answer: "wij", tense: "persoonlijk vnw subject" },
+        { infinitive: "persoonlijk vnw subject", sentence: "Dit weekend werken ... door, ook op zondag.", translation: "This weekend we are the ones working through, even on Sunday.", answer: "wij", tense: "persoonlijk vnw subject" }
+
+    ],
+
+    15: [
+        // — mij / me —
+        { infinitive: "persoonlijk vnw object", sentence: "Kun je ... even helpen?", translation: "Can you help me for a moment?", answer: "me", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Ze belde ... gisteravond.", translation: "She called me last night.", answer: "me", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Dit cadeau is voor ....", translation: "This present is for me.", answer: "mij", tense: "persoonlijk vnw object" },   // na vz → mij
+        { infinitive: "persoonlijk vnw object", sentence: "Niet hem maar ... nodigde ze uit.", translation: "Not him but me she invited.", answer: "mij", tense: "persoonlijk vnw object" }, // contrast → mij
+
+        // — jou / je —
+        { infinitive: "persoonlijk vnw object", sentence: "Ik mis ... elke dag.", translation: "I miss you every day.", answer: "je", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Zal ik ... later appen?", translation: "Shall I message you later?", answer: "je", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Dit bericht is voor ....", translation: "This message is for you.", answer: "jou", tense: "persoonlijk vnw object" }, // na vz → jou
+        { infinitive: "persoonlijk vnw object", sentence: "Niet haar maar ... bel ik eerst.", translation: "Not her but you I will call first.", answer: "jou", tense: "persoonlijk vnw object" }, // contrast → jou
+
+        // — hem —
+        { infinitive: "persoonlijk vnw object", sentence: "Ken je ... al?", translation: "Do you know him already?", answer: "hem", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Wij zagen ... bij het station.", translation: "We saw him at the station.", answer: "hem", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Ze praat vaak over ....", translation: "She often talks about him.", answer: "hem", tense: "persoonlijk vnw object" },
+
+        // — haar —
+        { infinitive: "persoonlijk vnw object", sentence: "Ik help ... met de taak.", translation: "I help her with the task.", answer: "haar", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Zie jij ... daar staan?", translation: "Do you see her standing there?", answer: "haar", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "We wachten op ....", translation: "We are waiting for her.", answer: "haar", tense: "persoonlijk vnw object" },
+
+        // — ons —
+        { infinitive: "persoonlijk vnw object", sentence: "Kun je ... de weg wijzen?", translation: "Can you show us the way?", answer: "ons", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Hij nodigde ... voor het feestje uit.", translation: "He invited us to the party.", answer: "ons", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Ze werkt graag met ....", translation: "She likes to work with us.", answer: "ons", tense: "persoonlijk vnw object" },
+
+        // — jullie —
+        { infinitive: "persoonlijk vnw object", sentence: "Ik bel ... morgen terug.", translation: "I will call you (plural) back tomorrow.", answer: "jullie", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "De docent gaf ... extra uitleg.", translation: "The teacher gave you (plural) extra explanation.", answer: "jullie", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Dit is speciaal voor ....", translation: "This is especially for you (plural).", answer: "jullie", tense: "persoonlijk vnw object" },
+
+        // — u —
+        { infinitive: "persoonlijk vnw object", sentence: "Kan ik ... spreken, alstublieft?", translation: "May I speak to you (formal), please?", answer: "u", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Dit formulier is voor ....", translation: "This form is for you (formal).", answer: "u", tense: "persoonlijk vnw object" },
+
+        // — ze (unstressed DO: them) —
+        { infinitive: "persoonlijk vnw object", sentence: "Ik zie ... elke dag op school.", translation: "I see them every day at school.", answer: "ze", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Kun je ... even roepen?", translation: "Can you call them for a moment?", answer: "ze", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "We hebben ... niet gevonden.", translation: "We didn’t find them.", answer: "ze", tense: "persoonlijk vnw object" },
+
+        // — hen (DO of na voorzetsel) —
+        { infinitive: "persoonlijk vnw object", sentence: "De coach kiest ... voor het team.", translation: "The coach chooses them for the team.", answer: "hen", tense: "persoonlijk vnw object" }, // DO
+        { infinitive: "persoonlijk vnw object", sentence: "Hij sprak met ....", translation: "He spoke with them.", answer: "hen", tense: "persoonlijk vnw object" },                                 // na vz
+        { infinitive: "persoonlijk vnw object", sentence: "We denken aan ....", translation: "We are thinking of them.", answer: "hen", tense: "persoonlijk vnw object" },                           // na vz
+
+        // — hun (IO zonder voorzetsel) —
+        { infinitive: "persoonlijk vnw object", sentence: "Ik geef ... het boek terug.", translation: "I give them the book back.", answer: "hun", tense: "persoonlijk vnw object" },                 // IO zonder vz
+        { infinitive: "persoonlijk vnw object", sentence: "De leraar vertelde ... het goede nieuws.", translation: "The teacher told them the good news.", answer: "hun", tense: "persoonlijk vnw object" },
+
+        // — extra contrast/voorzetsel variatie —
+        { infinitive: "persoonlijk vnw object", sentence: "Ze kozen niet mij maar ... voor het team.", translation: "They chose not me but him for the team.", answer: "hem", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Het pakket is voor ..., niet voor haar.", translation: "The package is for him, not for her.", answer: "hem", tense: "persoonlijk vnw object" },
+        { infinitive: "persoonlijk vnw object", sentence: "Kun je het aan ... geven? (meervoud)", translation: "Can you hand it to them? (plural)", answer: "hun", tense: "persoonlijk vnw object" }    // IO
+
+    ],
+
+    16: [
+        // — mijn —
+        { infinitive: "bezittelijk vnw", sentence: "Is dit ... boek?", translation: "Is this my book?", answer: "mijn", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Ik kan ... telefoon niet vinden.", translation: "I can’t find my phone.", answer: "mijn", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "We gaan met ... vrienden uit eten.", translation: "We are going out to eat with my friends.", answer: "mijn", tense: "bezittelijk vnw" },
+
+        // — jouw / je —
+        { infinitive: "bezittelijk vnw", sentence: "Niet mijn maar ... fiets staat buiten.", translation: "Not mine but your bike is outside.", answer: "jouw", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Is dit ... jas of die van haar?", translation: "Is this your coat or hers?", answer: "jouw", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Waar ligt ... telefoon nu?", translation: "Where is your phone now?", answer: "je", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Ik stuur het naar ... e-mailadres.", translation: "I’ll send it to your email address.", answer: "je", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Juist ... idee kiezen we voor het project.", translation: "We are choosing your idea for the project.", answer: "jouw", tense: "bezittelijk vnw" },
+
+        // — uw —
+        { infinitive: "bezittelijk vnw", sentence: "Mag ik ... naam en adres?", translation: "May I have your (formal) name and address?", answer: "uw", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Waar staat ... auto geparkeerd?", translation: "Where is your (formal) car parked?", answer: "uw", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Hier is ... rekening, alstublieft.", translation: "Here is your (formal) bill, please.", answer: "uw", tense: "bezittelijk vnw" },
+
+        // — zijn —
+        { infinitive: "bezittelijk vnw", sentence: "Hij zoekt ... sleutels.", translation: "He is looking for his keys.", answer: "zijn", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Dat is ... nieuwe baan.", translation: "That is his new job.", answer: "zijn", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "We hebben ... idee besproken.", translation: "We discussed his idea.", answer: "zijn", tense: "bezittelijk vnw" },
+
+        // — haar —
+        { infinitive: "bezittelijk vnw", sentence: "Zij vergeet vaak ... portemonnee.", translation: "She often forgets her wallet.", answer: "haar", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Is dit ... kop koffie?", translation: "Is this her cup of coffee?", answer: "haar", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Ik vond ... telefoon op tafel.", translation: "I found her phone on the table.", answer: "haar", tense: "bezittelijk vnw" },
+
+        // — ons / onze —  (ons = het-woord; onze = de/meervoud)
+        { infinitive: "bezittelijk vnw", sentence: "We gaan naar ... huis.", translation: "We are going to our house.", answer: "ons", tense: "bezittelijk vnw" },          // het huis
+        { infinitive: "bezittelijk vnw", sentence: "Dit is ... kind.", translation: "This is our child.", answer: "ons", tense: "bezittelijk vnw" },                       // het kind
+        { infinitive: "bezittelijk vnw", sentence: "We presenteren ... idee morgen.", translation: "We present our idea tomorrow.", answer: "ons", tense: "bezittelijk vnw" }, // het idee
+        { infinitive: "bezittelijk vnw", sentence: "Dat is ... probleem, niet het jouwe.", translation: "That is our problem, not yours.", answer: "ons", tense: "bezittelijk vnw" }, // het probleem
+        { infinitive: "bezittelijk vnw", sentence: "We parkeren naast ... auto.", translation: "We park next to our car.", answer: "onze", tense: "bezittelijk vnw" },      // de auto
+        { infinitive: "bezittelijk vnw", sentence: "Dit is ... tuin achter het huis.", translation: "This is our garden behind the house.", answer: "onze", tense: "bezittelijk vnw" }, // de tuin
+        { infinitive: "bezittelijk vnw", sentence: "Waar zijn ... boeken gebleven?", translation: "Where have our books gone?", answer: "onze", tense: "bezittelijk vnw" }, // meervoud
+        { infinitive: "bezittelijk vnw", sentence: "We bedanken ... docent na de les.", translation: "We thank our teacher after the lesson.", answer: "onze", tense: "bezittelijk vnw" }, // de docent
+
+        // — jullie —
+        { infinitive: "bezittelijk vnw", sentence: "Is dit ... kamer of die van hen?", translation: "Is this your (plural) room or theirs?", answer: "jullie", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Hoe laat begint ... les?", translation: "What time does your (plural) class start?", answer: "jullie", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Ik heb ... boodschap doorgegeven.", translation: "I passed on your (plural) message.", answer: "jullie", tense: "bezittelijk vnw" },
+
+        // — hun —
+        { infinitive: "bezittelijk vnw", sentence: "Ze verkopen ... huis volgend jaar.", translation: "They are selling their house next year.", answer: "hun", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Ik ken ... kinderen al lang.", translation: "I have known their children for a long time.", answer: "hun", tense: "bezittelijk vnw" },
+        { infinitive: "bezittelijk vnw", sentence: "Dat is ... plan voor het project.", translation: "That is their plan for the project.", answer: "hun", tense: "bezittelijk vnw" }
+
+    ],
+
+    17: [
+        { infinitive: "De klok", sentence: "14:15", translation: "quarter past two", answer: "kwart over twee", tense: "." },
+        { infinitive: "De klok", sentence: "14:30", translation: "half past two", answer: "half drie", tense: "." },
+        { infinitive: "De klok", sentence: "14:45", translation: "quarter to three", answer: "kwart voor drie", tense: "." }, // if your parser needs same order, swap key order back
+        { infinitive: "De klok", sentence: "09:00", translation: "nine o’clock", answer: "negen uur", tense: "." },
+        { infinitive: "De klok", sentence: "15:00", translation: "three o’clock", answer: "drie uur", tense: "." },
+        { infinitive: "De klok", sentence: "07:05", translation: "five past seven", answer: "vijf over zeven", tense: "." },
+        { infinitive: "De klok", sentence: "07:25", translation: "twenty-five past seven", answer: "vijf voor half acht", tense: "." },
+        { infinitive: "De klok", sentence: "07:35", translation: "twenty-five to eight", answer: "vijf over half acht", tense: "." },
+        { infinitive: "De klok", sentence: "10:20", translation: "twenty past ten", answer: "tien voor half elf", tense: "." },
+        { infinitive: "De klok", sentence: "10:40", translation: "twenty to eleven", answer: "tien over half elf", tense: "." },
+        { infinitive: "De klok", sentence: "18:50", translation: "ten to seven", answer: "tien voor zeven", tense: "." },
+        { infinitive: "De klok", sentence: "21:15", translation: "quarter past nine", answer: "kwart over negen", tense: "." },
+        { infinitive: "De klok", sentence: "00:30", translation: "half past twelve (a.m.)", answer: "half een", tense: "." },
+        { infinitive: "De klok", sentence: "12:55", translation: "five to one", answer: "vijf voor één", tense: "." },
+        { infinitive: "De klok", sentence: "23:05", translation: "five past eleven", answer: "vijf over elf", tense: "." },
+        { infinitive: "De klok", sentence: "16:45", translation: "quarter to five", answer: "kwart voor vijf", tense: "." },
+        { infinitive: "De klok", sentence: "04:10", translation: "ten past four", answer: "tien over vier", tense: "." },
+        { infinitive: "De klok", sentence: "05:30", translation: "half past five", answer: "half zes", tense: "." },
+        { infinitive: "De klok", sentence: "11:35", translation: "twenty-five to twelve", answer: "vijf over half twaalf", tense: "." },
+        { infinitive: "De klok", sentence: "13:25", translation: "twenty-five past one", answer: "vijf voor half twee", tense: "." },
+        { infinitive: "De klok", sentence: "13:20", translation: "twenty past one", answer: "tien voor half twee", tense: "." },
+        { infinitive: "De klok", sentence: "02:45", translation: "quarter to three", answer: "kwart voor drie", tense: "." },
+        { infinitive: "De klok", sentence: "02:15", translation: "quarter past two", answer: "kwart over twee", tense: "." },
+        { infinitive: "De klok", sentence: "20:30", translation: "half past eight", answer: "half negen", tense: "." },
+        { infinitive: "De klok", sentence: "17:40", translation: "twenty to six", answer: "tien over half zes", tense: "." },
+        { infinitive: "De klok", sentence: "06:55", translation: "five to seven", answer: "vijf voor zeven", tense: "." },
+        { infinitive: "De klok", sentence: "22:25", translation: "twenty-five past ten", answer: "vijf voor half elf", tense: "." },
+        { infinitive: "De klok", sentence: "22:35", translation: "twenty-five to eleven", answer: "vijf over half elf", tense: "." },
+        { infinitive: "De klok", sentence: "08:10", translation: "ten past eight", answer: "tien over acht", tense: "." },
+        { infinitive: "De klok", sentence: "12:15", translation: "quarter past twelve", answer: "kwart over twaalf", tense: "." }
+    ],
+
+    18: [
+        { infinitive: "tijd", sentence: "De les begint ... 19:00.", translation: "The class starts at 7:00 p.m.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De afspraak is ... 14:30.", translation: "The appointment is at 2:30 p.m.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De trein vertrekt ... 06:12.", translation: "The train leaves at 6:12 a.m.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We eten ... acht uur.", translation: "We eat at eight o’clock.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het alarm gaat af ... 07:00.", translation: "The alarm goes off at 7:00 a.m.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het concert begint ... 20:15.", translation: "The concert starts at 8:15 p.m.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het journaal is ... half negen.", translation: "The news is at 8:30.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ik kom ... kwart voor tien.", translation: "I’ll come at a quarter to ten.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Bel me ... vijf over drie.", translation: "Call me at five past three.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De winkel opent ... negen uur.", translation: "The shop opens at nine o’clock.", answer: "om", tense: "tijd" },
+
+        { infinitive: "tijd", sentence: "We verhuizen ... juli.", translation: "We are moving in July.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De cursus start ... september.", translation: "The course starts in September.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ze is geboren ... 1998.", translation: "She was born in 1998.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het project is klaar ... 2026.", translation: "The project will be ready in 2026.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ik werk het liefst ... de ochtend.", translation: "I prefer to work in the morning.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Hij sport ... de avond.", translation: "He works out in the evening.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ze slapen ... de middag.", translation: "They sleep in the afternoon.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We gaan kamperen ... de zomer.", translation: "We go camping in the summer.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Er valt veel sneeuw ... de winter.", translation: "There is a lot of snow in the winter.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We zien elkaar ... het weekend.", translation: "We see each other on/at the weekend.", answer: "in", tense: "tijd" },
+
+        { infinitive: "tijd", sentence: "De vergadering is ... maandag.", translation: "The meeting is on Monday.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We vertrekken ... vrijdag.", translation: "We leave on Friday.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het feest is ... zaterdagavond.", translation: "The party is on Saturday evening.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Hij komt terug ... 3 mei.", translation: "He comes back on May 3rd.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De afspraak staat ... 12 juni.", translation: "The appointment is on June 12th.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "School begint weer ... de eerste maandag van september.", translation: "School starts again on the first Monday of September.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We eten samen ... kerstavond.", translation: "We eat together on Christmas Eve.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ze belt terug ... nieuwjaarsdag.", translation: "She will call back on New Year’s Day.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De toets is ... die dag.", translation: "The test is on that day.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ik zie je ... je verjaardag.", translation: "I’ll see you on your birthday.", answer: "op", tense: "tijd" },
+
+        { infinitive: "tijd", sentence: "We beginnen ... tijd.", translation: "We start on time.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Dat gebeurde ... dezelfde dag.", translation: "That happened on the same day.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ik lever het verslag in ... de deadline.", translation: "I will hand in the report on the deadline.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het museum is dicht ... maandag.", translation: "The museum is closed on Monday.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De markt is ... zondagochtend.", translation: "The market is on Sunday morning.", answer: "op", tense: "tijd" },
+
+        { infinitive: "tijd", sentence: "We zien elkaar weer ... twee weken.", translation: "We will see each other again in two weeks.", answer: "over", tense: "tijd" }, // <- VERMIJD DIT, zie noot
+        { infinitive: "tijd", sentence: "Hij komt terug ... drie dagen.", translation: "He returns in three days.", answer: "over", tense: "tijd" },                 // <- VERMIJD DIT, zie noot
+        { infinitive: "tijd", sentence: "Ik was klaar ... één uur.", translation: "I was ready in one hour (duration).", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het examen duurt ... twee uur.", translation: "The exam lasts for two hours.", answer: "in", tense: "tijd" },
+
+        { infinitive: "tijd", sentence: "De winkel heeft koopavond ... donderdag.", translation: "The shop has late-night shopping on Thursday.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De cursus loopt ... het najaar.", translation: "The course runs in the autumn.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ze trouwen ... de lente.", translation: "They get married in the spring.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het is stil ... de nacht.", translation: "It is quiet at night.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We vertrekken ... zonsopgang.", translation: "We leave at sunrise.", answer: "bij", tense: "tijd" }, // <- VERMIJD DIT, zie noot
+        { infinitive: "tijd", sentence: "Ze publiceerden het rapport ... 15 maart.", translation: "They published the report on March 15th.", answer: "op", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het museum opent opnieuw ... 2027.", translation: "The museum reopens in 2027.", answer: "in", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Er is een pauze ... half vier.", translation: "There is a break at 3:30.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De inschrijving sluit ... middernacht.", translation: "Registration closes at midnight.", answer: "om", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De film begint ... 10 minuten.", translation: "The movie starts in 10 minutes.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "We vertrekken ... een uur.", translation: "We leave in an hour.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Ik bel je terug ... vijf minuten.", translation: "I’ll call you back in five minutes.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De winkel gaat open ... twee dagen.", translation: "The shop opens in two days.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De afspraak is ... drie weken.", translation: "The appointment is in three weeks.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "De cursus start ... een maand.", translation: "The course starts in a month.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Hij komt terug ... drie kwartier.", translation: "He will come back in three quarters of an hour.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het project is klaar ... zes maanden.", translation: "The project will be finished in six months.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Het gaat waarschijnlijk stoppen met regenen ... een paar uur.", translation: "It will probably stop raining in a few hours.", answer: "over", tense: "tijd" },
+        { infinitive: "tijd", sentence: "Mijn verjaardag is ... twee weken.", translation: "My birthday is in two weeks.", answer: "over", tense: "tijd" }
+    ],
+
+    19: [
+        { infinitive: "adjectief", sentence: "De ... (rood) jas hangt aan de kapstok.", translation: "The red coat is hanging on the rack.", answer: "rode" },
+        { infinitive: "adjectief", sentence: "Het ... (klein) probleem is snel opgelost.", translation: "The small problem is solved quickly.", answer: "kleine" },
+        { infinitive: "adjectief", sentence: "Een ... (klein) probleem hoort erbij.", translation: "A small problem is part of it.", answer: "klein" },
+        { infinitive: "adjectief", sentence: "Ik koop een ... (nieuw) huis.", translation: "I am buying a new house.", answer: "nieuw" },
+        { infinitive: "adjectief", sentence: "Zij draagt een ... (zwaar) koffer.", translation: "She carries a heavy suitcase.", answer: "zware" },
+
+        { infinitive: "adjectief", sentence: "De ... (lekker) soep staat op tafel.", translation: "The tasty soup is on the table.", answer: "lekkere" },
+        { infinitive: "adjectief", sentence: "We zoeken een ... (rustig) plek.", translation: "We are looking for a quiet place.", answer: "rustige" },
+        { infinitive: "adjectief", sentence: "Ik heb geen ... (duur) ticket nodig.", translation: "I don’t need an expensive ticket.", answer: "duur" },         // het-ticket → geen + het-woord = geen -e
+        { infinitive: "adjectief", sentence: "Hij kiest een ... (goedkoop) hotel.", translation: "He chooses a cheap hotel.", answer: "goedkoop" },             // het-hotel → een + het-woord = geen -e
+        { infinitive: "adjectief", sentence: "De ... (oud) auto start niet.", translation: "The old car won’t start.", answer: "oude" },
+
+        { infinitive: "adjectief", sentence: "Het ... (eerlijk) antwoord is nee.", translation: "The honest answer is no.", answer: "eerlijke" },
+        { infinitive: "adjectief", sentence: "Een ... (eerlijk) antwoord is belangrijk.", translation: "An honest answer is important.", answer: "eerlijk" },    // het-antwoord → een + het-woord
+        { infinitive: "adjectief", sentence: "Mijn ... (nieuw) telefoon is snel.", translation: "My new phone is fast.", answer: "nieuwe" },                    // possessief → altijd -e
+        { infinitive: "adjectief", sentence: "Zijn ... (lang) haar zit in een staart.", translation: "His long hair is in a ponytail.", answer: "lange" },       // het haar, maar bepaald → -e
+        { infinitive: "adjectief", sentence: "Haar ... (wit) schoenen zijn vies.", translation: "Her white shoes are dirty.", answer: "witte" },                 // meervoud → -e
+
+        { infinitive: "adjectief", sentence: "De kamer is ... (licht).", translation: "The room is light.", answer: "licht" },                                  // naamwoordelijk deel → geen -e
+        { infinitive: "adjectief", sentence: "Dit huis is erg ... (modern).", translation: "This house is very modern.", answer: "modern" },                    // predicatief
+        { infinitive: "adjectief", sentence: "Het ... (donker) bos is eng.", translation: "The dark forest is scary.", answer: "donkere" },
+        { infinitive: "adjectief", sentence: "Een ... (donker) bos is eng.", translation: "A dark forest is scary.", answer: "donker" },                        // het-bos → een + het-woord
+        { infinitive: "adjectief", sentence: "De ... (blauw) trui past goed.", translation: "The blue sweater fits well.", answer: "blauwe" },
+
+        { infinitive: "adjectief", sentence: "Ik neem een ... (lekker) koekje.", translation: "I’ll take a tasty cookie.", answer: "lekker" },                  // het-koekje → een + het-woord
+        { infinitive: "adjectief", sentence: "We kochten de ... (lekker) koekjes.", translation: "We bought the tasty cookies.", answer: "lekkere" },           // meervoud
+        { infinitive: "adjectief", sentence: "Hij zoekt een ... (vrij) appartement.", translation: "He is looking for a free apartment.", answer: "vrij" },     // het-appartement → een + het-woord
+        { infinitive: "adjectief", sentence: "Het ... (vrij) appartement is al verhuurd.", translation: "The free apartment is already rented.", answer: "vrije" },
+        { infinitive: "adjectief", sentence: "Zij leest het ... (nieuw) artikel.", translation: "She reads the new article.", answer: "nieuwe" },
+
+        { infinitive: "adjectief", sentence: "Ik heb een ... (schoon) glas nodig.", translation: "I need a clean glass.", answer: "schoon" },                   // het-glas → een + het-woord
+        { infinitive: "adjectief", sentence: "Het ... (schoon) glas staat hier.", translation: "The clean glass is here.", answer: "schone" },
+        { infinitive: "adjectief", sentence: "We nemen de ... (kort) route.", translation: "We take the short route.", answer: "korte" },
+        { infinitive: "adjectief", sentence: "Neem jij een ... (kort) pauze?", translation: "Are you taking a short break?", answer: "korte" },                  // de-pauze
+        { infinitive: "adjectief", sentence: "Dit is een ... (lang) verhaal.", translation: "This is a long story.", answer: "lang" },                          // het-verhaal → een + het-woord
+
+        { infinitive: "adjectief", sentence: "Het ... (lang) verhaal staat online.", translation: "The long story is online.", answer: "lange" },
+        { infinitive: "adjectief", sentence: "De ... (druk) straat is smal.", translation: "The busy street is narrow.", answer: "drukke" },
+        { infinitive: "adjectief", sentence: "Ik woon aan een ... (druk) straat.", translation: "I live on a busy street.", answer: "drukke" },                  // de-straat
+        { infinitive: "adjectief", sentence: "Hij heeft een ... (nieuw) idee.", translation: "He has a new idea.", answer: "nieuw" },                           // het-idee → een + het-woord
+        { infinitive: "adjectief", sentence: "Het ... (nieuw) idee bevalt me.", translation: "I like the new idea.", answer: "nieuwe" },
+
+        { infinitive: "adjectief", sentence: "Zij zoekt een ... (veilig) plek.", translation: "She is looking for a safe place.", answer: "veilige" },          // de-plek
+        { infinitive: "adjectief", sentence: "Dit is een ... (veilig) plan.", translation: "This is a safe plan.", answer: "veilig" },                          // het-plan → een
+        { infinitive: "adjectief", sentence: "Het ... (veilig) plan werkt goed.", translation: "The safe plan works well.", answer: "veilige" },
+        { infinitive: "adjectief", sentence: "Dat boek is ... (interessant).", translation: "That book is interesting.", answer: "interessant" },               // predicatief
+        { infinitive: "adjectief", sentence: "De ... (interessant) cursus start morgen.", translation: "The interesting course starts tomorrow.", answer: "interessante" },
+
+        { infinitive: "adjectief", sentence: "Hij draagt een ... (warm) trui.", translation: "He wears a warm sweater.", answer: "warme" },                     // de-trui
+        { infinitive: "adjectief", sentence: "Ik zoek een ... (warm) vest.", translation: "I’m looking for a warm cardigan.", answer: "warm" },                 // het-vest → een
+        { infinitive: "adjectief", sentence: "Het ... (warm) vest ligt in de kast.", translation: "The warm cardigan is in the closet.", answer: "warme" },
+        { infinitive: "adjectief", sentence: "De kamer voelt ... (koud).", translation: "The room feels cold.", answer: "koud" },                               // predicatief
+        { infinitive: "adjectief", sentence: "We kiezen de ... (goed) oplossing.", translation: "We choose the good solution.", answer: "goede" },
+
+        { infinitive: "adjectief", sentence: "Hij wil een ... (goed) advies.", translation: "He wants good advice.", answer: "goed" },                          // het-advies → een
+        { infinitive: "adjectief", sentence: "Het ... (goed) advies hielp echt.", translation: "The good advice really helped.", answer: "goede" },
+        { infinitive: "adjectief", sentence: "Zij draagt ... (zacht) sokken.", translation: "She is wearing soft socks.", answer: "zachte" },                   // meervoud
+        { infinitive: "adjectief", sentence: "We zoeken ... (nieuw) collega’s.", translation: "We are looking for new colleagues.", answer: "nieuwe" },          // meervoud
+        { infinitive: "adjectief", sentence: "Ik heb een ... (vrij) moment.", translation: "I have a free moment.", answer: "vrij" },                           // het-moment → een
+
+        { infinitive: "adjectief", sentence: "Het ... (vrij) moment is voorbij.", translation: "The free moment is over.", answer: "vrije" },
+        { infinitive: "adjectief", sentence: "Ze kiest de ... (juist) deur.", translation: "She chooses the right door.", answer: "juiste" },
+        { infinitive: "adjectief", sentence: "Kies een ... (juist) antwoord.", translation: "Choose a correct answer.", answer: "juist" },                       // het-antwoord → een
+        { infinitive: "adjectief", sentence: "De ... (gezond) keuze is duidelijk.", translation: "The healthy choice is clear.", answer: "gezonde" },
+        { infinitive: "adjectief", sentence: "Dit ontbijt is ... (gezond).", translation: "This breakfast is healthy.", answer: "gezond" }                      // predicatief
+
+    ],
+
+    20: [
+        { infinitive: "diminutief", sentence: "huis – ...", translation: "house – little house", answer: "huisje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "boom – ...", translation: "tree – little tree", answer: "boompje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "taal – ...", translation: "language – little language", answer: "taaltje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "boek – ...", translation: "book – little book", answer: "boekje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "tafel – ...", translation: "table – little table", answer: "tafeltje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "stoel – ...", translation: "chair – little chair", answer: "stoeltje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "deur – ...", translation: "door – little door", answer: "deurtje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "glas – ...", translation: "glass – small glass", answer: "glaasje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "brood – ...", translation: "bread – bread roll", answer: "broodje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "hand – ...", translation: "hand – little hand", answer: "handje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "kat – ...", translation: "cat – little cat", answer: "katje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "hond – ...", translation: "dog – little dog", answer: "hondje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "kind – ...", translation: "child – little child", answer: "kindje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "vrouw – ...", translation: "woman – little woman/lady", answer: "vrouwtje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "man – ...", translation: "man – little man", answer: "mannetje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "jongen – ...", translation: "boy – little boy", answer: "jongetje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "auto – ...", translation: "car – little car", answer: "autootje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "foto – ...", translation: "photo – little photo", answer: "fotootje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "piano – ...", translation: "piano – little piano", answer: "pianootje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "bloem – ...", translation: "flower – little flower", answer: "bloemetje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "appel – ...", translation: "apple – little apple", answer: "appeltje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "vogel – ...", translation: "bird – little bird", answer: "vogeltje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "sleutel – ...", translation: "key – little key", answer: "sleuteltje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "winkel – ...", translation: "shop – little shop", answer: "winkeltje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "straat – ...", translation: "street – little street", answer: "straatje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "dorp – ...", translation: "village – small village", answer: "dorpje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "stad – ...", translation: "city – small town", answer: "stadje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "tas – ...", translation: "bag – small bag", answer: "tasje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "fles – ...", translation: "bottle – small bottle", answer: "flesje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "mes – ...", translation: "knife – small knife", answer: "mesje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "kop – ...", translation: "cup – small cup", answer: "kopje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "bak – ...", translation: "tray/bowl – small tray", answer: "bakje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "bed – ...", translation: "bed – little bed", answer: "bedje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "schip – ...", translation: "ship – little ship", answer: "scheepje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "schaap – ...", translation: "sheep – little sheep", answer: "schaapje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "blad – ...", translation: "leaf/sheet – little leaf", answer: "blaadje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "brief – ...", translation: "letter/note – little note", answer: "briefje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "kaart – ...", translation: "ticket/card – small ticket", answer: "kaartje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "munt – ...", translation: "coin – small coin/token", answer: "muntje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "vis – ...", translation: "fish – small fish", answer: "visje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "oor – ...", translation: "ear – little ear/earbud", answer: "oortje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "oog – ...", translation: "eye – little eye", answer: "oogje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "ei – ...", translation: "egg – little egg", answer: "eitje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "kaas – ...", translation: "cheese – small cheese", answer: "kaasje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "kamer – ...", translation: "room – small room", answer: "kamertje", tense: "diminutief" },
+
+        { infinitive: "diminutief", sentence: "plant – ...", translation: "plant – small plant", answer: "plantje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "struik – ...", translation: "bush – small bush", answer: "struikje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "koning – ...", translation: "king – little king", answer: "koninkje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "woning – ...", translation: "dwelling – small dwelling", answer: "woninkje", tense: "diminutief" },
+        { infinitive: "diminutief", sentence: "broek – ...", translation: "trousers – little pair of trousers", answer: "broekje", tense: "diminutief" }
+
+    ],
+
+    21: [
+        { infinitive: "zullen + wel", sentence: "Hij komt te laat.", translation: "He is late.", answer: "Hij zal wel te laat komen.", tense: "zullen+wel" },
+
+        { infinitive: "zullen + wel", sentence: "Zij is moe.", translation: "She is tired.", answer: "Zij zal wel moe zijn.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Het regent straks.", translation: "It will rain soon.", answer: "Het zal wel gaan regenen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "De winkel is dicht.", translation: "The shop is closed.", answer: "De winkel zal wel dicht zijn.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Ze hebben geen tijd.", translation: "They don’t have time.", answer: "Ze zullen wel geen tijd hebben.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Hij weet het antwoord.", translation: "He knows the answer.", answer: "Hij zal het antwoord wel weten.", tense: "zullen+wel" },
+
+        { infinitive: "zullen + wel", sentence: "Ik ben te laat met het huiswerk.", translation: "I am late with the homework.", answer: "Ik zal wel te laat zijn met het huiswerk.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Jullie komen met de fiets.", translation: "You (pl.) are coming by bike.", answer: "Jullie zullen wel met de fiets komen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "De trein heeft vertraging.", translation: "The train has a delay.", answer: "De trein zal wel vertraging hebben.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Het is druk op de weg.", translation: "It is busy on the road.", answer: "Het zal wel druk zijn op de weg.", tense: "zullen+wel" },
+
+        { infinitive: "zullen + wel", sentence: "Hij belt later.", translation: "He will call later.", answer: "Hij zal later wel bellen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Ze is niet thuis.", translation: "She is not at home.", answer: "Ze zal wel niet thuis zijn.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "We beginnen om negen uur.", translation: "We start at nine o’clock.", answer: "We zullen wel om negen uur beginnen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Het kost veel geld.", translation: "It costs a lot of money.", answer: "Het zal wel veel geld kosten.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Jij bent ziek.", translation: "You are ill.", answer: "Jij zal/zult wel ziek zijn.", tense: "zullen+wel" },
+
+        { infinitive: "zullen + wel", sentence: "De docent is boos.", translation: "The teacher is angry.", answer: "De docent zal wel boos zijn.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Ze komt niet op tijd.", translation: "She won’t arrive on time.", answer: "Ze zal wel niet op tijd komen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Hij vindt dat leuk.", translation: "He likes that.", answer: "Hij zal dat wel leuk vinden.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "We hebben het goed gedaan.", translation: "We did it well.", answer: "We zullen het wel goed gedaan hebben.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Ze zijn al weg.", translation: "They have left already.", answer: "Ze zullen wel al weg zijn.", tense: "zullen+wel" },
+
+        { infinitive: "zullen + wel", sentence: "Het duurt nog lang.", translation: "It will take a long time.", answer: "Het zal wel nog lang duren.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "De bus komt zo.", translation: "The bus is coming soon.", answer: "De bus zal zo wel komen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Hij begrijpt de vraag.", translation: "He understands the question.", answer: "Hij zal de vraag wel begrijpen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Ze wonen dichtbij.", translation: "They live nearby.", answer: "Ze zullen wel dichtbij wonen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Het is fout gegaan.", translation: "Something went wrong.", answer: "Het zal wel fout gegaan zijn.", tense: "zullen+wel" },
+
+        { infinitive: "zullen + wel", sentence: "Ik vind het later terug.", translation: "I’ll find it later.", answer: "Ik zal het later wel terugvinden.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Ze leest de instructies.", translation: "She reads the instructions.", answer: "Ze zal de instructies wel lezen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "We hebben genoeg tijd.", translation: "We have enough time.", answer: "We zullen wel genoeg tijd hebben.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Jullie kennen de regels.", translation: "You (pl.) know the rules.", answer: "Jullie zullen de regels wel kennen.", tense: "zullen+wel" },
+        { infinitive: "zullen + wel", sentence: "Hij neemt zijn laptop mee.", translation: "He is taking his laptop along.", answer: "Hij zal zijn laptop wel meenemen.", tense: "zullen+wel" }
+
+    ],
+    22: [
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Waar is Tanja? ... is in de sportschool.", translation: "Where is Tanja? She is at the gym.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik werk bij een leuk bedrijf. ... verkoopt vintage lp’s.", translation: "I work at a nice company. It sells vintage LPs.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie zijn die mensen daar? ... zijn mijn buren.", translation: "Who are those people over there? Those are my neighbours.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Waar liggen je sleutels? ... liggen op de tafel.", translation: "Where are your keys? They are on the table.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Heb je de presentatie al gestuurd? ... heb ik gisteren gedaan.", translation: "Have you sent the presentation already? I did that yesterday.", answer: "dat" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Dit is mijn fiets en ... is van mijn zus.", translation: "This is my bike and that one is my sister’s.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Kijk, ... is onze nieuwe docent.", translation: "Look, this is our new teacher.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik heb twee jassen. ... met capuchon draag ik vanavond.", translation: "I have two coats. The one with a hood I’ll wear tonight.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Waar is het paspoort? ... ligt in de la.", translation: "Where is the passport? It is in the drawer.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Vind je die planten mooi? Ja, ... vind ik prachtig.", translation: "Do you like those plants? Yes, I find those beautiful.", answer: "die" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat ruikt er zo lekker? ... is versgebakken brood.", translation: "What smells so good? This is freshly baked bread.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie belt er? ... is de monteur.", translation: "Who is calling? That is the mechanic.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik vond twee fouten. ... verbeteren we straks.", translation: "I found two mistakes. We’ll correct those later.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke laptop neem je? ... met het grote scherm.", translation: "Which laptop will you take? The one with the big screen.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik heb nieuws. ... wil ik meteen vertellen.", translation: "I have news. I want to tell that immediately.", answer: "dat" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wil jij deze koekjes? Nee, ... zijn voor de buren.", translation: "Do you want these cookies? No, those are for the neighbours.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat is je doel? ... is duidelijk: slagen voor B1.", translation: "What is your goal? This is clear: to pass B1.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie was die man net? ... is de nieuwe manager.", translation: "Who was that man just now? That is the new manager.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik zag twee huizen. ... met de tuin bevalt me het meest.", translation: "I saw two houses. The one with the garden pleases me most.", answer: "dat" }, // het-huis → dat
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "We hebben drie opties. ... is het goedkoopst.", translation: "We have three options. This one is the cheapest.", answer: "dit" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke jas past beter? ... met de rode rits.", translation: "Which coat fits better? The one with the red zipper.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik heb je mail gelezen. ... is erg duidelijk.", translation: "I read your email. It is very clear.", answer: "die" }, // de-mail → die
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat hoor ik? ... is de deurbel.", translation: "What do I hear? This is the doorbell.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie zijn er aanwezig? ... zijn de cursisten.", translation: "Who are present? Those are the course participants.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke pen schrijft fijn? ... met de blauwe inkt.", translation: "Which pen writes well? The one with blue ink.", answer: "die" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Kijk eens hier. ... is precies wat we zochten.", translation: "Look here. This is exactly what we were looking for.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik hoor wat buiten. ... zal de postbode zijn.", translation: "I hear something outside. That will be the postman.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke route nemen we? ... over de brug is korter.", translation: "Which route do we take? The one over the bridge is shorter.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke kop wil je? ... zonder oor graag.", translation: "Which cup do you want? The one without a handle, please.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik kies een appartement. ... op de derde verdieping.", translation: "I’m choosing an apartment. The one on the third floor.", answer: "dat" }, // het-appartement → dat
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat staat er op tafel? ... is het lesmateriaal.", translation: "What is on the table? This is the course material.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie zijn dat op de foto? ... zijn mijn opa en oma.", translation: "Who are those in the photo? Those are my grandparents.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Je mag kiezen. ... neem ik, de rest is voor jou.", translation: "You may choose. I’ll take this one; the rest is for you.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik heb drie fouten gemaakt. ... ga ik eerst verbeteren.", translation: "I made three mistakes. I’ll correct those first.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat is dat geluid? ... komt van de straat.", translation: "What is that sound? That comes from the street.", answer: "dat" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke stoel neem je? ... met de kussens zit lekker.", translation: "Which chair will you take? The one with the cushions sits comfortably.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik heb nieuws voor je. ... ga ik straks uitleggen.", translation: "I have news for you. I’ll explain that in a moment.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Waar zijn je handschoenen? ... liggen nog in je jas.", translation: "Where are your gloves? Those are still in your coat.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Kijk op het bord. ... is het huiswerk.", translation: "Look at the board. This is the homework.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie klopt er aan? ... zijn de buren.", translation: "Who is knocking? That is the neighbours.", answer: "dat" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "We hebben twee kamers vrij. ... met het balkon is groter.", translation: "We have two rooms free. The one with the balcony is bigger.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik vond een fout in de tekst. ... moet je verbeteren.", translation: "I found a mistake in the text. You have to correct that.", answer: "die" }, // de-fout
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat stuur je nu? ... is de factuur.", translation: "What are you sending now? This is the invoice.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke oefening doe je eerst? ... met de audio.", translation: "Which exercise will you do first? The one with the audio.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie is er jarig? ... is mijn collega.", translation: "Whose birthday is it? That is my colleague.", answer: "dat" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "We willen een rustig hotel. ... aan het strand lijkt perfect.", translation: "We want a quiet hotel. The one on the beach seems perfect.", answer: "dat" }, // het-hotel → dat
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik heb twee tickets. ... zonder korting is voor jou.", translation: "I have two tickets. The one without discount is for you.", answer: "het" }, // ⚠️ Aanwijzend vnw moet zijn "dat"; maar 'ticket' is het-woord → gebruik ‘dat’
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke map open je? ... met ‘Les 5’.", translation: "Which folder are you opening? The one with ‘Lesson 5’.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat bedoel je precies? ... snap ik nog niet.", translation: "What do you mean exactly? I don’t understand that yet.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wat is je favoriete foto? ... met de zonsondergang.", translation: "What is your favourite photo? The one with the sunset.", answer: "die" },
+
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Wie zijn er afwezig? ... staan op de lijst.", translation: "Who are absent? Those are on the list.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Welke taart neem je? ... met aardbei ziet er goed uit.", translation: "Which cake will you take? The one with strawberry looks good.", answer: "die" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Ik hoor muziek. ... komt uit de keuken.", translation: "I hear music. That comes from the kitchen.", answer: "dat" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "Kies maar iets uit. ... vind ik het handigst.", translation: "Just choose something. I find this the most practical.", answer: "dit" },
+        { infinitive: "aanwijzend vnw (zelfstandig)", sentence: "We hebben het plan besproken. ... sturen we morgen op.", translation: "We discussed the plan. We will send that tomorrow.", answer: "dat" }
+
+    ],
+
+    23: [
+        // — Compact (1 gap)
+        { infinitive: "er + prepositie", sentence: "Denk je aan onze afspraak? Ja, ik denk ... .", translation: "Are you thinking of our appointment? I think of it.", answer: "eraan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Heb je spijt van je keuze? Ja, ik heb ... spijt.", translation: "Do you regret your choice? I regret it.", answer: "ervan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Wil je stoppen met roken? Ja, ik wil ... stoppen.", translation: "Do you want to quit smoking? I want to stop it.", answer: "ermee", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Praten jullie vaak over dat probleem? Ja, we praten ... in de les.", translation: "Do you often talk about that problem? We talk about it in class.", answer: "erover", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Reken je op hulp? Ja, ik reken ... .", translation: "Do you count on help? I count on it.", answer: "erop", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Kijk je naar die serie? Ja, ik kijk ... .", translation: "Do you watch that series? I watch it.", answer: "ernaar", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Hoor je bij die groep? Ja, ik hoor ... .", translation: "Do you belong to that group? I belong to it.", answer: "erbij", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Ben je tegen dat plan? Ja, ik ben ... .", translation: "Are you against that plan? I’m against it.", answer: "ertegen", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Zorg je voor de planten? Ja, ik zorg goed ... .", translation: "Do you take care of the plants? I take good care of them.", answer: "ervoor", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Ben je bang voor honden? Ja, ik ben ... bang.", translation: "Are you afraid of dogs? I’m afraid of them.", answer: "ervoor", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Geloof je in die theorie? Ja, ik geloof ... .", translation: "Do you believe in that theory? I believe in it.", answer: "erin", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Slaagde je in de toets? Ja, ik slaagde ... .", translation: "Did you pass the test? Yes, I succeeded in it.", answer: "erin", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Ben je tevreden met het resultaat? Ja, ik ben ... tevreden.", translation: "Are you satisfied with the result? I’m satisfied with it.", answer: "ermee", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Twijfel je aan dat verhaal? Ja, ik twijfel ... .", translation: "Do you doubt that story? I doubt it.", answer: "eraan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Werk je aan dat rapport? Ja, ik werk ... .", translation: "Are you working on that report? I’m working on it.", answer: "eraan", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Klaag je over het lawaai? Ja, ik klaag ... .", translation: "Do you complain about the noise? I complain about it.", answer: "erover", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Luister je naar de docent? Ja, ik luister ... .", translation: "Do you listen to the teacher? I listen to him/her.", answer: "ernaar", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Wacht je op de bus? Ja, ik wacht ... .", translation: "Are you waiting for the bus? I’m waiting for it.", answer: "erop", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Denk je vaak over je toekomst? Ja, ik denk vaak ... .", translation: "Do you often think about your future? I often think about it.", answer: "erover", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Vertrouw je op je team? Ja, ik vertrouw ... .", translation: "Do you rely on your team? I rely on it.", answer: "erop", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Heb je last van de hitte? Ja, ik heb ... last.", translation: "Are you bothered by the heat? I am bothered by it.", answer: "ervan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Profiteer je van de korting? Ja, ik profiteer ... .", translation: "Do you benefit from the discount? I benefit from it.", answer: "ervan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Houd je van klassieke muziek? Ja, ik houd ... .", translation: "Do you love classical music? I love it.", answer: "ervan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Heb je toegang tot het gebouw? Ja, ik heb ... toegang.", translation: "Do you have access to the building? I have access to it.", answer: "ertoe", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Leidt dit tot betere resultaten? Ja, het leidt ... .", translation: "Does this lead to better results? It leads to them.", answer: "ertoe", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Ben je al af van die verkoudheid? Ja, ik ben ... .", translation: "Are you rid of that cold yet? I’m rid of it.", answer: "ervanaf", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Ga je naar de bibliotheek? Ja, ik ga ... .", translation: "Are you going to the library? I’m going there.", answer: "ernaartoe", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Komt hij uit die stad? Ja, hij komt ... .", translation: "Is he from that city? He is from there.", answer: "ervandaan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Ben je klaar met het hoofdstuk? Ja, ik ben ... klaar.", translation: "Are you finished with the chapter? I’m finished with it.", answer: "ermee", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Begin je met de oefening? Ja, ik begin ... .", translation: "Are you starting the exercise? I’m starting it.", answer: "ermee", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Kijk je uit naar de vakantie? Ja, ik kijk ... uit.", translation: "Are you looking forward to the holiday? I’m looking forward to it.", answer: "ernaar", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Let je op de details? Ja, ik let ... .", translation: "Are you paying attention to the details? I’m paying attention to them.", answer: "erop", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Schrijf je over je ervaringen? Ja, ik schrijf ... .", translation: "Are you writing about your experiences? I write about them.", answer: "erover", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Richt je je op beginners? Ja, ik richt me ... .", translation: "Do you focus on beginners? I focus on them.", answer: "erop", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Reageer je op feedback? Ja, ik reageer ... .", translation: "Do you respond to feedback? I respond to it.", answer: "erop", tense: "er+prep" },
+
+        // — Gescheiden (2 gaps) —
+        { infinitive: "er + prepositie", sentence: "Ben je trots op je werk? Ja, ik ben ... trots ....", translation: "Are you proud of your work? I’m proud of it.", answer: "er op", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Kijk je nog naar de uitslag? Ja, ik kijk ... straks ....", translation: "Are you still checking the result? I’ll look at it later.", answer: "er naar", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Klaag je nog over het lawaai? Ja, ik klaag ... nog ....", translation: "Are you still complaining about the noise? I still complain about it.", answer: "er over", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Reken je morgen op hulp? Ja, ik reken ... morgen ....", translation: "Will you count on help tomorrow? I will count on it tomorrow.", answer: "er op", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Twijfel je nog aan dat idee? Ja, ik twijfel ... nog ....", translation: "Do you still doubt that idea? I still doubt it.", answer: "er aan", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Werk je morgen aan het rapport? Ja, ik werk ... morgen ....", translation: "Will you work on the report tomorrow? I’ll work on it tomorrow.", answer: "er aan", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Begin je morgen met die taak? Ja, ik begin ... morgen ....", translation: "Are you starting that task tomorrow? I’ll start it tomorrow.", answer: "er mee", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Zorg je morgen voor de planten? Ja, ik zorg ... morgen ....", translation: "Will you take care of the plants tomorrow? I’ll take care of them tomorrow.", answer: "er voor", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Richt je je vandaag op grammatica? Ja, ik richt me ... vandaag ....", translation: "Are you focusing on grammar today? I’m focusing on it today.", answer: "er op", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Praat je later over het plan? Ja, ik praat ... vanavond ....", translation: "Will you talk about the plan later? I’ll talk about it tonight.", answer: "er over", tense: "er+prep" },
+
+        { infinitive: "er + prepositie", sentence: "Kijk je uit naar het weekend? Ja, ik kijk ... echt ....", translation: "Are you looking forward to the weekend? I’m really looking forward to it.", answer: "er naar", tense: "er+prep" },
+        { infinitive: "er + prepositie", sentence: "Ben je tegen dat voorstel? Ja, ik ben ... absoluut ....", translation: "Are you against that proposal? I’m absolutely against it.", answer: "er tegen", tense: "er+prep" }
+
+    ],
+
+    24: [
+        { infinitive: "om te", sentence: "We gaan naar de supermarkt (to buy bread)", translation: "We are going to the supermarket (to buy bread).", answer: "om brood te kopen", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij oefent elke dag Nederlands (to get better)", translation: "He practices Dutch every day (to get better).", answer: "om beter te worden", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij zet een wekker (to wake up early)", translation: "She sets an alarm (to wake up early).", answer: "om vroeg wakker te worden", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik neem mijn laptop mee (to work in the train)", translation: "I take my laptop (to work on the train).", answer: "om in de trein te werken", tense: "om te" },
+        { infinitive: "om te", sentence: "We stoppen even (to drink coffee)", translation: "We stop for a moment (to drink coffee).", answer: "om koffie te drinken", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij opent het raam (to get fresh air)", translation: "He opens the window (to get fresh air).", answer: "om frisse lucht te krijgen", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij belt haar moeder (to ask a question)", translation: "She calls her mother (to ask a question).", answer: "om een vraag te stellen", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik leer nieuwe woorden (to speak better)", translation: "I learn new words (to speak better).", answer: "om beter te spreken", tense: "om te" },
+        { infinitive: "om te", sentence: "We nemen de bus (to go to the city center)", translation: "We take the bus (to go to the city centre).", answer: "om naar het centrum te gaan", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij koopt een kaartje (to enter the museum)", translation: "He buys a ticket (to enter the museum).", answer: "om het museum binnen te gaan", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij doet de deur dicht (to keep the warmth inside)", translation: "She closes the door (to keep the warmth inside).", answer: "om de warmte binnen te houden", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik schrijf alles op (to remember it)", translation: "I write everything down (to remember it).", answer: "om het te onthouden", tense: "om te" },
+        { infinitive: "om te", sentence: "We nemen een paraplu mee (to stay dry)", translation: "We take an umbrella (to stay dry).", answer: "om droog te blijven", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij gaat vroeg naar bed (to be fit tomorrow)", translation: "He goes to bed early (to be fit tomorrow).", answer: "om morgen fit te zijn", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij volgt een cursus (to pass the exam)", translation: "She takes a course (to pass the exam).", answer: "om voor het examen te slagen", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik zet de radio aan (to listen to the news)", translation: "I turn on the radio (to listen to the news).", answer: "om naar het nieuws te luisteren", tense: "om te" },
+        { infinitive: "om te", sentence: "We reserveren een tafel (to eat together)", translation: "We reserve a table (to eat together).", answer: "om samen te eten", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij maakt een lijstje (to plan the week)", translation: "He makes a list (to plan the week).", answer: "om de week te plannen", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij koopt bloemen (to make the room cheerful)", translation: "She buys flowers (to make the room cheerful).", answer: "om de kamer vrolijk te maken", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik draag sportkleren (to run in the park)", translation: "I wear sports clothes (to run in the park).", answer: "om in het park te rennen", tense: "om te" },
+        { infinitive: "om te", sentence: "We zetten het raam open (to air the room)", translation: "We open the window (to air the room).", answer: "om de kamer te luchten", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij neemt contant geld mee (to pay at the market)", translation: "He takes cash (to pay at the market).", answer: "om op de markt te betalen", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij doet een warme jas aan (to stay warm)", translation: "She puts on a warm coat (to stay warm).", answer: "om warm te blijven", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik open mijn boek (to read hoofdstuk 3)", translation: "I open my book (to read chapter 3).", answer: "om hoofdstuk drie te lezen", tense: "om te" },
+        { infinitive: "om te", sentence: "We gaan eerder weg (to catch the train)", translation: "We leave earlier (to catch the train).", answer: "om de trein te halen", tense: "om te" },
+        { infinitive: "om te", sentence: "Hij zet koffie (to stay awake)", translation: "He makes coffee (to stay awake).", answer: "om wakker te blijven", tense: "om te" },
+        { infinitive: "om te", sentence: "Zij neemt haar woordenboek (to look up words)", translation: "She takes her dictionary (to look up words).", answer: "om woorden op te zoeken", tense: "om te" },
+        { infinitive: "om te", sentence: "Ik stuur een mail (to confirm the appointment)", translation: "I send an email (to confirm the appointment).", answer: "om de afspraak te bevestigen", tense: "om te" }
+
     ]
 };
