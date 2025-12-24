@@ -883,7 +883,7 @@ window.topicSentences = {
         { infinitive: "persoonlijk vnw subject", sentence: "Vandaag bel ... de huisarts, niet ik.", translation: "Today you call the GP, not me.", answer: "jij", tense: "persoonlijk vnw subject" },
         { infinitive: "persoonlijk vnw subject", sentence: "Als er iemand kan helpen, dan ben ... het.", translation: "If anyone can help, then it is you.", answer: "jij", tense: "persoonlijk vnw subject" },
         { infinitive: "persoonlijk vnw subject", sentence: "Niet zij maar ... presenteren het plan.", translation: "Not they but we present the plan.", answer: "wij", tense: "persoonlijk vnw subject" },
-        { infinitive: "persoonlijk vnw subject", sentence: "Dit weekend werken ... door, ook op zondag.", translation: "This weekend we are the ones working through, even on Sunday.", answer: "wij", tense: "persoonlijk vnw subject" }
+        { infinitive: "persoonlijk vnw subject", sentence: "Dit weekend werken ... door, ook op zondag.", translation: "This weekend we are the ones working through, even on Sunday.", answer: "wij / we", tense: "persoonlijk vnw subject" }
 
     ],
 
