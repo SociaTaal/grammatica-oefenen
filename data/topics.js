@@ -580,7 +580,7 @@ window.topicSentences = {
         { infinitive: "conjunctie", sentence: "We wachten hier, ... jij terugkomt.", translation: "We wait here until you come back.", answer: "totdat" },
         { infinitive: "conjunctie", sentence: "Ik weet niet ... hij de sleutel heeft.", translation: "I don’t know whether he has the key.", answer: "of" },
         { infinitive: "conjunctie", sentence: "We gingen naar binnen, ... het donker werd.", translation: "We went inside when it became dark.", answer: "toen" },
-        { infinitive: "conjunctie", sentence: "Neem een jas mee, ... het koud wordt.", translation: "Take a coat so that it doesn’t get cold for you.", answer: "zodat" },
+        { infinitive: "conjunctie", sentence: "Neem een jas mee, ... je het niet koud krijgt.", translation: "Take a coat so that it doesn’t get cold for you.", answer: "zodat" },
         { infinitive: "conjunctie", sentence: "Hij werkt hard, ... hij een bonus wil.", translation: "He works hard because he wants a bonus.", answer: "omdat / want" },
         { infinitive: "conjunctie", sentence: "Ik ga wandelen, ... het regent niet.", translation: "I am going for a walk if it doesn’t rain.", answer: "als / wanneer" },
         { infinitive: "conjunctie", sentence: "Ze kwam te laat, ... de bus niet reed.", translation: "She was late because the bus didn’t run.", answer: "omdat / want" },
