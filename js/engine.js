@@ -1,0 +1,189 @@
+// engine.js — turns the raw data into normalized questions across all types,
+// builds a master pool (used by review/random/blitz), and checks answers.
+// Defines window.Engine. Depends on window.topicSentences, TOPIC_LABELS, DEHET_WORDS.
+(function () {
+  "use strict";
+
+  const TOPICS = window.topicSentences || {};
+  const LABELS = window.TOPIC_LABELS || {};
+  const DEHET = Array.isArray(window.DEHET_WORDS) ? window.DEHET_WORDS : [];
+
+  const VERB_TOPICS = [1, 2, 3, 13];
+  const VERB_TENSE_LABELS = {
+    present: "Tegenwoordige tijd",
+    perfectum: "Perfectum",
+    imperfectum: "Imperfectum",
+    plusquamperfectum: "Plusquamperfectum",
+  };
+  const TOPIC_TO_TENSE = { 1: "present", 2: "perfectum", 3: "imperfectum", 13: "plusquamperfectum" };
+
+  const LEVELS = {
+    1: [14, 15, 16, 17, 18, 19, 4, 25],
+    2: [5, 6, 20],
+    3: [7, 8, 21],
+    4: [9, 10, 22, 24],
+    5: [11, 12, 23],
+  };
+
+  // ---- text utilities ----
+  function sanitize(text) {
+    if (!text) return "";
+    let s = String(text).normalize("NFD").replace(/\p{Diacritic}/gu, "");
+    s = s.replace(/[\u00A0\u1680\u2000-\u200A\u202F\u205F\u3000]/g, " ");
+    return s.trim().toLowerCase().replace(/\s+/g, " ").replace(/[.!?;:,]+$/g, "");
+  }
+  function variants(answerRaw) {
+    return String(answerRaw == null ? "" : answerRaw).split("/").map(sanitize).filter(Boolean);
+  }
+  function checkText(user, answerRaw) {
+    return variants(answerRaw).includes(sanitize(user));
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  function sample(arr, n) { return shuffle(arr).slice(0, n); }
+
+  // The "infinitive"/pill text for verb sentences; complete the sentence for TTS.
+  function completeSentence(s, answerRaw) {
+    const first = String(answerRaw).split("/")[0].trim();
+    if (s.indexOf("...") >= 0) return s.replace("...", first);
+    // separable-verb topics use a double space gap instead of "..."
+    return s.replace(/\s{2,}/, " " + first + " ").trim();
+  }
+
+  // ---- build the master pool of linear questions ----
+  const pool = [];
+
+  // Verb / grammar fill questions (and word-order for topic 25)
+  Object.keys(TOPICS).forEach((tk) => {
+    const topic = Number(tk);
+    const arr = TOPICS[tk] || [];
+    arr.forEach((q, i) => {
+      if (!q || !q.answer) return;
+      const tense = q.tense || TOPIC_TO_TENSE[topic] || null;
+      if (topic === 25) {
+        const tokens = String(q.sentence).split("/").map((t) => t.trim()).filter(Boolean);
+        if (tokens.length < 2) return;
+        pool.push({
+          id: `order:${topic}:${i}`, type: "order", topic,
+          tokens, answer: q.answer, translation: q.translation || "",
+          infinitive: "zinsbouw", tense: null,
+          speak: variants(q.answer)[0] ? String(q.answer).split("/")[0].trim() : "",
+        });
+      } else {
+        pool.push({
+          id: `fill:${topic}:${i}`, type: "fill", topic,
+          prompt: q.sentence || "", answer: q.answer,
+          translation: q.translation || "",
+          infinitive: q.infinitive || (LABELS[topic] || ""),
+          tense: VERB_TOPICS.includes(topic) ? tense : null,
+          tenseLabel: tense && VERB_TENSE_LABELS[tense] ? VERB_TENSE_LABELS[tense] : null,
+          speak: completeSentence(q.sentence || "", q.answer),
+        });
+        // Dictation variant for verb sentences (listening mode).
+        if (VERB_TOPICS.includes(topic)) {
+          const full = completeSentence(q.sentence || "", q.answer);
+          pool.push({
+            id: `listen:${topic}:${i}`, type: "listen", topic,
+            prompt: "Typ de zin die je hoort.", answer: full,
+            translation: q.translation || "", infinitive: "luisteren",
+            tense: null, speak: full, isSentence: true,
+          });
+        }
+      }
+    });
+  });
+
+  // De/Het article questions + vocabulary choice + word listening
+  DEHET.forEach((w, i) => {
+    if (!w || !w.word || !w.article) return;
+    pool.push({
+      id: `article:0:${i}`, type: "article", topic: "dehet",
+      word: w.word, article: w.article, translation: w.translation || "",
+      infinitive: "de / het", tense: null, speak: `${w.article} ${w.word}`,
+    });
+  });
+
+  function buildVocab() {
+    const out = [];
+    DEHET.forEach((w, i) => {
+      if (!w || !w.word || !w.translation) return;
+      const others = () => sample(DEHET.filter((x) => x.translation !== w.translation), 3);
+      // NL -> EN
+      const enDistract = others().map((x) => x.translation);
+      out.push({
+        id: `choice:nl:${i}`, type: "choice", topic: "vocab",
+        prompt: w.word, infinitive: "woordenschat", tense: null,
+        translation: "", speak: w.word,
+        correct: w.translation, choices: shuffle([w.translation, ...enDistract]),
+        question: `Wat betekent "${w.word}"?`,
+      });
+      // EN -> NL
+      const nlDistract = others().map((x) => x.word);
+      out.push({
+        id: `choice:en:${i}`, type: "choice", topic: "vocab",
+        prompt: w.translation, infinitive: "woordenschat", tense: null,
+        translation: "", speak: w.word,
+        correct: w.word, choices: shuffle([w.word, ...nlDistract]),
+        question: `Welk woord betekent "${w.translation}"?`,
+      });
+      // listening: speak word, type it
+      out.push({
+        id: `listen:vocab:${i}`, type: "listen", topic: "vocab",
+        prompt: "Typ het woord dat je hoort.", answer: w.word,
+        translation: w.translation || "", infinitive: "luisteren",
+        tense: null, speak: w.word, isSentence: false,
+      });
+    });
+    return out;
+  }
+  // Vocab/listen questions are generated fresh (choices re-shuffled) but with stable ids.
+  const vocabPool = buildVocab();
+  vocabPool.forEach((q) => pool.push(q));
+
+  const byId = {};
+  pool.forEach((q) => { byId[q.id] = q; });
+
+  // ---- public selectors ----
+  function verbQuestions(tenseTopics) {
+    const set = new Set(tenseTopics.map(Number));
+    return pool.filter((q) => q.type === "fill" && set.has(Number(q.topic)));
+  }
+  function topicQuestions(topic) {
+    const t = Number(topic);
+    if (t === 25) return pool.filter((q) => q.type === "order");
+    return pool.filter((q) => q.type === "fill" && Number(q.topic) === t);
+  }
+  function articleQuestions() { return pool.filter((q) => q.type === "article"); }
+  function vocabQuestions() { return pool.filter((q) => q.type === "choice"); }
+  function listenQuestions() { return pool.filter((q) => q.type === "listen"); }
+  function orderQuestions() { return pool.filter((q) => q.type === "order"); }
+  function allQuestions() { return pool.slice(); }
+
+  function reviewQuestions(ids) {
+    return ids.map((id) => byId[id]).filter(Boolean);
+  }
+
+  // Build a matching board: n pairs of NL <-> EN.
+  function matchBoard(n) {
+    const words = sample(DEHET.filter((w) => w.word && w.translation), n);
+    return words.map((w, i) => ({ key: i, nl: w.word, en: w.translation, article: w.article }));
+  }
+
+  const Engine = {
+    LABELS, LEVELS, VERB_TOPICS, VERB_TENSE_LABELS, TOPIC_TO_TENSE,
+    sanitize, checkText, variants, shuffle, sample,
+    verbQuestions, topicQuestions, articleQuestions, vocabQuestions,
+    listenQuestions, orderQuestions, allQuestions, reviewQuestions, matchBoard,
+    questionById: (id) => byId[id],
+    stats: { total: pool.length },
+  };
+
+  window.Engine = Engine;
+})();
