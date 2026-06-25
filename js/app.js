@@ -56,7 +56,7 @@
     const hero = el("section", "hero");
     const due = Store.reviewIds().length;
     hero.innerHTML = `
-      <h1>Hoi! Zullen we oefenen?</h1>
+      <h1>Oefening baart kunst 👌🏼</h1>
       <p class="muted">${due
         ? `Je hebt <b>${due}</b> ${due === 1 ? "woord" : "woorden"} om te herhalen.`
         : "Kies een oefening om te beginnen."}</p>`;
