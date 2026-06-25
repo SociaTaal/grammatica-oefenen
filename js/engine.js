@@ -114,24 +114,14 @@
     const out = [];
     DEHET.forEach((w, i) => {
       if (!w || !w.word || !w.translation) return;
-      const others = () => sample(DEHET.filter((x) => x.translation !== w.translation), 3);
-      // NL -> EN
-      const enDistract = others().map((x) => x.translation);
+      // Typed vocab: show the English meaning, type the Dutch word.
+      // Accept the word on its own or with its article (e.g. "boom" or "de boom").
+      const answer = `${w.word} / ${w.article} ${w.word}`;
       out.push({
-        id: `choice:nl:${i}`, type: "choice", topic: "vocab",
-        prompt: w.word, infinitive: "woordenschat", tense: null,
+        id: `vocab:${i}`, type: "vocab", topic: "vocab",
+        prompt: `Schrijf het Nederlandse woord voor “${w.translation}”.`,
+        answer, infinitive: "woordenschat", tense: null,
         translation: "", speak: w.word,
-        correct: w.translation, choices: shuffle([w.translation, ...enDistract]),
-        question: `Wat betekent "${w.word}"?`,
-      });
-      // EN -> NL
-      const nlDistract = others().map((x) => x.word);
-      out.push({
-        id: `choice:en:${i}`, type: "choice", topic: "vocab",
-        prompt: w.translation, infinitive: "woordenschat", tense: null,
-        translation: "", speak: w.word,
-        correct: w.word, choices: shuffle([w.word, ...nlDistract]),
-        question: `Welk woord betekent "${w.translation}"?`,
       });
       // listening: speak word, type it
       out.push({
@@ -161,7 +151,7 @@
     return pool.filter((q) => q.type === "fill" && Number(q.topic) === t);
   }
   function articleQuestions() { return pool.filter((q) => q.type === "article"); }
-  function vocabQuestions() { return pool.filter((q) => q.type === "choice"); }
+  function vocabQuestions() { return pool.filter((q) => q.type === "vocab"); }
   function listenQuestions() { return pool.filter((q) => q.type === "listen"); }
   function orderQuestions() { return pool.filter((q) => q.type === "order"); }
   function allQuestions() { return pool.slice(); }
