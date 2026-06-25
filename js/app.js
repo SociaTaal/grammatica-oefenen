@@ -15,15 +15,6 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  // ---------- header / meter ----------
-  function refreshMeter() {
-    const lv = Store.level();
-    $("lvl-badge").textContent = lv.level;
-    $("xp-label").textContent = `${lv.total} XP`;
-    $("xp-fill").style.width = Math.round((lv.into / lv.need) * 100) + "%";
-    $("streak-count").textContent = Store.state.streak.count;
-  }
-
   // ---------- toast ----------
   function toast(msg, emoji) {
     const t = el("div", "toast", `<span>${emoji || "✨"}</span> ${esc(msg)}`);
@@ -40,32 +31,6 @@
     document.documentElement.dataset.theme = dark ? "dark" : "light";
   }
 
-  // ---------- achievements ----------
-  const ACHIEVEMENTS = [
-    { id: "first", emoji: "🎉", title: "Eerste ronde", test: (s) => s.stats.rounds >= 1 },
-    { id: "perfect", emoji: "💎", title: "Foutloze ronde", test: (s, r) => r && r.perfect },
-    { id: "streak3", emoji: "🔥", title: "3 dagen op rij", test: (s) => s.streak.count >= 3 },
-    { id: "streak7", emoji: "🏆", title: "Een week lang!", test: (s) => s.streak.count >= 7 },
-    { id: "level5", emoji: "⭐", title: "Level 5 bereikt", test: (s) => Store.level().level >= 5 },
-    { id: "xp1000", emoji: "🚀", title: "1000 XP", test: (s) => s.xp >= 1000 },
-    { id: "century", emoji: "💯", title: "100 vragen beantwoord", test: (s) => s.stats.answered >= 100 },
-    { id: "words50", emoji: "📚", title: "50 woorden beheerst", test: () => Store.masteredCount() >= 50 },
-    { id: "blitz20", emoji: "⚡", title: "Blitz: 20 goed", test: (s) => s.stats.bestBlitz >= 20 },
-  ];
-  function checkAchievements(roundInfo) {
-    const unlocked = [];
-    ACHIEVEMENTS.forEach((a) => {
-      if (!Store.has(a.id) && a.test(Store.state, roundInfo)) {
-        if (Store.unlock(a.id)) unlocked.push(a);
-      }
-    });
-    unlocked.forEach((a, i) => setTimeout(() => {
-      toast(`Prestatie: ${a.title}`, a.emoji);
-      FX.levelUp();
-    }, 400 + i * 700));
-    return unlocked;
-  }
-
   // ======================================================================
   // SCREENS
   // ======================================================================
@@ -74,7 +39,7 @@
   const MODES = [
     { key: "verbs", emoji: "🧩", title: "Werkwoorden", sub: "Vervoeg in 4 tijden" },
     { key: "dehet", emoji: "⚖️", title: "De / Het", sub: "Lidwoorden trainen" },
-    { key: "vocab", emoji: "🔤", title: "Woordenschat", sub: "Meerkeuze NL ⇄ EN" },
+    { key: "vocab", emoji: "🔤", title: "Woordenschat", sub: "Typ het Nederlandse woord" },
     { key: "listen", emoji: "🎧", title: "Luisteren", sub: "Typ wat je hoort" },
     { key: "order", emoji: "🔀", title: "Zinsbouw", sub: "Zet de zin op volgorde" },
     { key: "match", emoji: "🧠", title: "Memory", sub: "Koppel woordparen" },
@@ -82,20 +47,19 @@
     { key: "review", emoji: "♻️", title: "Herhalen", sub: "Jouw fouten opnieuw" },
     { key: "random", emoji: "🎲", title: "Verrassing", sub: "Alles door elkaar" },
     { key: "blitz", emoji: "⚡", title: "Blitz", sub: "60 sec, zo veel mogelijk" },
-    { key: "stats", emoji: "📊", title: "Statistieken", sub: "Jouw voortgang" },
   ];
 
   const render = {};
 
   render.menu = function () {
     clear();
-    const lv = Store.level();
     const hero = el("section", "hero");
-    const acc = Store.state.stats.answered
-      ? Math.round((Store.state.stats.correct / Store.state.stats.answered) * 100) : 0;
+    const due = Store.reviewIds().length;
     hero.innerHTML = `
       <h1>Hoi! Zullen we oefenen?</h1>
-      <p class="muted">Level ${lv.level} · ${acc}% correct · ${Store.masteredCount()} woorden beheerst</p>`;
+      <p class="muted">${due
+        ? `Je hebt <b>${due}</b> ${due === 1 ? "woord" : "woorden"} om te herhalen.`
+        : "Kies een oefening om te beginnen."}</p>`;
     screen.appendChild(hero);
 
     const grid = el("section", "grid");
@@ -121,7 +85,6 @@
     switch (key) {
       case "verbs": return render.tense();
       case "levels": return render.levels();
-      case "stats": return render.stats();
       case "match": return render.match();
       case "dehet":
         return startRound(Engine.sample(Engine.articleQuestions(), count), { title: "De / Het" });
@@ -226,11 +189,12 @@
       questions, idx: 0,
       hearts: opts.blitz ? Infinity : (opts.hearts || 3),
       maxHearts: opts.blitz ? 0 : (opts.hearts || 3),
-      mistakes: [], correct: 0, answered: 0,
+      mistakes: [], mistakeQs: [], correct: 0, answered: 0,
+      combo: 0, bestCombo: 0,
       title: opts.title || "Oefenen",
       blitz: !!opts.blitz, seconds: opts.seconds || 0,
-      gainedXp: 0, hintUsed: false, lifeLost: false,
-      timeLeft: opts.seconds || 0, timer: null,
+      hintUsed: false, lifeLost: false,
+      timeLeft: opts.seconds || 0, timer: null, startTime: Date.now(),
     };
     if (!questions.length) { toast("Geen vragen gevonden", "🤷"); return render.menu(); }
     renderQuizShell();
@@ -247,6 +211,7 @@
         <div class="progress"><span id="prog-fill"></span></div>
         <div class="hearts" id="hearts"></div>
       </div>
+      <div class="quiz-live" id="quiz-live"></div>
       <div class="qcard" id="qcard"></div>`;
     screen.appendChild(wrap);
     $("quiz-back").addEventListener("click", () => {
@@ -254,6 +219,16 @@
       round = null; render.menu();
     });
     updateHearts();
+    updateLive();
+  }
+
+  // Live in-round stats: score so far + current combo (consecutive correct).
+  function updateLive() {
+    const n = $("quiz-live");
+    if (!n) return;
+    const combo = round.combo >= 2
+      ? `<span class="live-combo">🔥 ${round.combo} op rij</span>` : "";
+    n.innerHTML = `<span class="live-score">✓ ${round.correct} / ${round.answered}</span>${combo}`;
   }
 
   function updateHearts() {
@@ -449,30 +424,31 @@
     }
   }
 
-  // Unified per-question completion. Records stats/SRS exactly once.
+  // Unified per-question completion. Records SRS + session combo exactly once.
   function finalize(q, correct, clean) {
     if (round.finalized) return;
     round.finalized = true;
     round.answered++;
     if (correct) {
       round.correct++;
-      const xp = round.blitz ? 5 : 10;
-      round.gainedXp += xp;
-      const up = Store.addXp(xp);
+      round.combo++;
+      if (round.combo > round.bestCombo) round.bestCombo = round.combo;
       Store.record(q.id, !!clean);
-      refreshMeter();
       FX.correct(); FX.confetti();
-      if (up.leveledUp) { toast(`Level ${up.level}!`, "⬆️"); FX.levelUp(); }
     } else {
+      round.combo = 0;
       Store.record(q.id, false);
       pushMistake(q);
     }
+    updateLive();
   }
 
-  // A wrong attempt: deduct one heart per question (retries don't stack).
+  // A wrong attempt: break the combo and deduct one heart (retries don't stack).
   function hitWrong(q) {
     round.dirty = true;
+    round.combo = 0;
     pushMistake(q);
+    updateLive();
     if (!round.lifeLost) {
       round.lifeLost = true;
       if (!round.blitz) { round.hearts = Math.max(0, round.hearts - 1); updateHearts(); }
@@ -483,6 +459,7 @@
     if (round._mistakeIds && round._mistakeIds.has(q.id)) return;
     round._mistakeIds = round._mistakeIds || new Set();
     round._mistakeIds.add(q.id);
+    round.mistakeQs.push(q);
     round.mistakes.push({
       q: q.prompt || q.word || q.question || (q.tokens ? q.tokens.join(" ") : "") || "",
       answer: q.answer || q.correct || q.article || "",
@@ -563,24 +540,22 @@
     if (!round) return;
     if (round.timer) clearInterval(round.timer);
     const r = round;
-    const perfect = !r.blitz && r.mistakes.length === 0 && r.answered > 0;
-    let bonus = 0;
-    if (perfect) { bonus = 50; Store.addXp(50); r.gainedXp += 50; }
-    const streak = Store.finishRound(r.blitz ? r.correct : undefined);
-    refreshMeter();
-    const unlocked = checkAchievements({ perfect });
+    const perfect = r.mistakes.length === 0 && r.answered > 0;
+    const acc = r.answered ? Math.round((r.correct / r.answered) * 100) : 0;
+    const secs = Math.max(1, Math.round((Date.now() - r.startTime) / 1000));
+    const avg = r.answered ? (secs / r.answered).toFixed(1) : "0";
+    const missedQs = r.mistakeQs.slice();
 
     clear();
-    const acc = r.answered ? Math.round((r.correct / r.answered) * 100) : 0;
     const sec = el("section", "result");
     sec.innerHTML = `
       <div class="result-emoji">${perfect ? "💎" : acc >= 70 ? "🎉" : "💪"}</div>
       <h1>${r.blitz ? "Tijd voorbij!" : perfect ? "Foutloos!" : "Goed gedaan!"}</h1>
       <div class="result-stats">
-        <div><b>${r.correct}</b><span>${r.blitz ? "goed" : "/ " + r.answered + " goed"}</span></div>
+        <div><b>${r.correct}/${r.answered}</b><span>goed</span></div>
         <div><b>${acc}%</b><span>accuraat</span></div>
-        <div><b>+${r.gainedXp}</b><span>XP${bonus ? " (incl. +" + bonus + ")" : ""}</span></div>
-        <div><b>${streak}🔥</b><span>dagenreeks</span></div>
+        <div><b>${r.bestCombo}🔥</b><span>beste reeks</span></div>
+        <div><b>${formatTime(secs)}</b><span>${avg}s per vraag</span></div>
       </div>`;
     if (r.mistakes.length) {
       const m = el("div", "mistakes");
@@ -593,14 +568,27 @@
       sec.appendChild(m);
     }
     const actions = el("div", "result-actions");
-    const again = el("button", "btn primary", "Nog een ronde");
-    again.addEventListener("click", () => render.menu());
+    if (missedQs.length) {
+      const replay = el("button", "btn primary", `Herhaal je fouten (${missedQs.length})`);
+      replay.addEventListener("click", () =>
+        startRound(Engine.shuffle(missedQs), { title: "Herhalen", hearts: 5 }));
+      actions.appendChild(replay);
+    } else {
+      const again = el("button", "btn primary", "Nog een ronde");
+      again.addEventListener("click", () => render.menu());
+      actions.appendChild(again);
+    }
     const home = el("button", "btn ghost", "Menu");
     home.addEventListener("click", () => render.menu());
-    actions.appendChild(again); actions.appendChild(home);
+    actions.appendChild(home);
     sec.appendChild(actions);
     screen.appendChild(sec);
     round = null;
+  }
+
+  function formatTime(s) {
+    if (s < 60) return s + "s";
+    return Math.floor(s / 60) + "m " + (s % 60) + "s";
   }
 
   // ======================================================================
@@ -665,12 +653,6 @@
     }
     function finishMatch() {
       const secs = Math.round((Date.now() - start) / 1000);
-      const xp = Math.max(20, board.length * 12 - mistakes * 5 - secs);
-      const up = Store.addXp(xp);
-      Store.finishRound();
-      refreshMeter();
-      if (up.leveledUp) FX.levelUp();
-      checkAchievements({ perfect: mistakes === 0 });
       setTimeout(() => {
         clear();
         const sec = el("section", "result");
@@ -678,9 +660,9 @@
           <div class="result-emoji">${mistakes === 0 ? "💎" : "🧠"}</div>
           <h1>Alle paren gevonden!</h1>
           <div class="result-stats">
-            <div><b>${secs}s</b><span>tijd</span></div>
+            <div><b>${board.length}</b><span>paren</span></div>
+            <div><b>${formatTime(secs)}</b><span>tijd</span></div>
             <div><b>${mistakes}</b><span>fouten</span></div>
-            <div><b>+${xp}</b><span>XP</span></div>
           </div>`;
         const a = el("div", "result-actions");
         const again = el("button", "btn primary", "Nog een keer");
@@ -691,41 +673,6 @@
         sec.appendChild(a); screen.appendChild(sec);
       }, 650);
     }
-  };
-
-  // ======================================================================
-  // STATS
-  // ======================================================================
-  render.stats = function () {
-    clear();
-    screen.appendChild(backBar("Statistieken"));
-    const s = Store.state;
-    const lv = Store.level();
-    const acc = s.stats.answered ? Math.round((s.stats.correct / s.stats.answered) * 100) : 0;
-    const panel = el("section", "panel");
-    panel.innerHTML = `
-      <div class="stat-grid">
-        <div class="stat"><b>${lv.level}</b><span>Level</span></div>
-        <div class="stat"><b>${s.xp}</b><span>Totaal XP</span></div>
-        <div class="stat"><b>${s.streak.count}🔥</b><span>Dagenreeks</span></div>
-        <div class="stat"><b>${s.stats.answered}</b><span>Beantwoord</span></div>
-        <div class="stat"><b>${acc}%</b><span>Accuraat</span></div>
-        <div class="stat"><b>${Store.masteredCount()}</b><span>Beheerst</span></div>
-        <div class="stat"><b>${s.stats.rounds}</b><span>Rondes</span></div>
-        <div class="stat"><b>${s.stats.bestBlitz}</b><span>Blitz record</span></div>
-      </div>`;
-    screen.appendChild(panel);
-
-    const achv = el("section", "panel");
-    achv.innerHTML = `<h2>Prestaties (${s.achievements.length}/${ACHIEVEMENTS.length})</h2>`;
-    const ag = el("div", "achv-grid");
-    ACHIEVEMENTS.forEach((a) => {
-      const got = Store.has(a.id);
-      ag.appendChild(el("div", "achv " + (got ? "got" : "locked"),
-        `<span class="achv-emoji">${got ? a.emoji : "🔒"}</span><span>${a.title}</span>`));
-    });
-    achv.appendChild(ag);
-    screen.appendChild(achv);
   };
 
   // ======================================================================
@@ -786,7 +733,6 @@
   // ======================================================================
   function init() {
     applyTheme();
-    refreshMeter();
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
 
     $("brand").addEventListener("click", () => { if (round && round.timer) clearInterval(round.timer); round = null; render.menu(); });
@@ -801,7 +747,7 @@
     });
     $("reset-btn").addEventListener("click", () => {
       if (confirm("Weet je het zeker? Alle voortgang wordt gewist.")) {
-        Store.reset(); refreshMeter(); closeDrawer(); render.menu();
+        Store.reset(); closeDrawer(); render.menu();
         toast("Voortgang gewist", "🧹");
       }
     });
