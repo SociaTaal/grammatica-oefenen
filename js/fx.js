@@ -49,29 +49,33 @@
     },
 
     // ---- Dutch text-to-speech ----
-    _voice: null,
-    _pickVoice() {
-      if (!("speechSynthesis" in window)) return null;
-      const voices = speechSynthesis.getVoices();
-      this._voice =
-        voices.find((v) => /nl[-_]NL/i.test(v.lang)) ||
-        voices.find((v) => /^nl/i.test(v.lang)) || null;
-      return this._voice;
+    _voices: [],
+    _loaded: false,
+    _refresh() {
+      if (!("speechSynthesis" in window)) return;
+      const v = speechSynthesis.getVoices() || [];
+      if (v.length) { this._voices = v; this._loaded = true; }
     },
     canSpeak() { return "speechSynthesis" in window; },
+    voicesLoaded() { return this._loaded; },
+    dutchVoices() { this._refresh(); return this._voices.filter((v) => /^nl/i.test(v.lang)); },
+    hasDutchVoice() { return this.dutchVoices().length > 0; },
+    // Returns { ok, reason?, dutch? } so the UI can warn when no Dutch voice exists.
     speak(text) {
-      if (!("speechSynthesis" in window)) return;
-      if (window.Store && !Store.settings.tts) return;
-      if (!text) return;
+      if (!("speechSynthesis" in window)) return { ok: false, reason: "unsupported" };
+      if (window.Store && !Store.settings.tts) return { ok: false, reason: "disabled" };
+      if (!text) return { ok: false, reason: "empty" };
       try {
         speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "nl-NL";
         u.rate = 0.95;
-        if (!this._voice) this._pickVoice();
-        if (this._voice) u.voice = this._voice;
+        const nl = this.dutchVoices();
+        const v = nl.find((x) => /nl[-_]NL/i.test(x.lang)) || nl[0] || null;
+        if (v) u.voice = v;
         speechSynthesis.speak(u);
-      } catch (e) {}
+        return { ok: true, dutch: !!v };
+      } catch (e) { return { ok: false, reason: "error" }; }
     },
 
     // ---- Confetti (canvas) ----
@@ -116,8 +120,9 @@
   };
 
   if ("speechSynthesis" in window) {
-    speechSynthesis.onvoiceschanged = () => FX._pickVoice();
-    setTimeout(() => FX._pickVoice(), 200);
+    FX._refresh();
+    speechSynthesis.onvoiceschanged = () => FX._refresh();
+    setTimeout(() => FX._refresh(), 200);
   }
 
   window.FX = FX;

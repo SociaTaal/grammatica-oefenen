@@ -23,6 +23,20 @@
     setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.remove(), 300); }, 2600);
   }
 
+  // ---------- speech ----------
+  let warnedNoVoice = false;
+  function sayDutch(text) {
+    const res = FX.speak(text);
+    if (!res || warnedNoVoice) return;
+    if (res.reason === "unsupported") {
+      warnedNoVoice = true;
+      toast("Je browser ondersteunt geen spraak.", "🔇");
+    } else if (res.ok && res.dutch === false && FX.voicesLoaded()) {
+      warnedNoVoice = true;
+      toast("Geen Nederlandse stem op dit apparaat — ik gebruik de standaardstem.", "🗣️");
+    }
+  }
+
   // ---------- theme ----------
   function applyTheme() {
     const mode = Store.settings.theme;
@@ -285,7 +299,7 @@
   }
   function wireSpeak(q) {
     const b = $("speak-btn");
-    if (b) b.addEventListener("click", () => FX.speak(q.speak));
+    if (b) b.addEventListener("click", () => sayDutch(q.speak));
   }
   function transRow(q) {
     if (!Store.settings.translation || !q.translation) return "";
@@ -329,8 +343,8 @@
         <button class="btn primary" id="check-btn">Controleren</button>
         <button class="btn ghost" id="hint-btn" disabled>?</button>
       </div>`;
-    $("big-speak").addEventListener("click", () => FX.speak(q.speak));
-    setTimeout(() => FX.speak(q.speak), 350);
+    $("big-speak").addEventListener("click", () => sayDutch(q.speak));
+    setTimeout(() => sayDutch(q.speak), 350);
     const input = $("answer");
     input.focus();
     input.addEventListener("keydown", (e) => { if (e.key === "Enter") $("check-btn").click(); });
