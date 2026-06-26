@@ -14,6 +14,8 @@
       translation: true,
       confetti: false,
       count: 20,            // questions per round
+      level: null,          // current course level (1–6); null = not chosen yet
+      levelCumulative: false, // also include content from lower levels
     },
     srs: {},                // id -> { wrong, correct, lastWrong, mastered }
   };

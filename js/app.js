@@ -57,7 +57,7 @@
     { key: "listen", emoji: "🎧", title: "Luisteren", sub: "Typ wat je hoort" },
     { key: "order", emoji: "🔀", title: "Zinsbouw", sub: "Zet de zin op volgorde" },
     { key: "match", emoji: "🧠", title: "Memory", sub: "Koppel woordparen" },
-    { key: "levels", emoji: "📈", title: "Per niveau", sub: "Cursus level 1–5" },
+    { key: "levels", emoji: "📈", title: "Per onderdeel", sub: "Grammatica van je niveau" },
     { key: "review", emoji: "♻️", title: "Herhalen", sub: "Jouw fouten opnieuw" },
     { key: "random", emoji: "🎲", title: "Verrassing", sub: "Alles door elkaar" },
     { key: "blitz", emoji: "⚡", title: "Blitz", sub: "60 sec, zo veel mogelijk" },
@@ -67,13 +67,16 @@
 
   render.menu = function () {
     clear();
+    refreshLevelChip();
     const hero = el("section", "hero");
     const due = Store.reviewIds().length;
+    const lv = Store.settings.level;
+    const sub = due
+      ? `Je hebt <b>${due}</b> ${due === 1 ? "woord" : "woorden"} om te herhalen.`
+      : (lv ? `Je oefent op niveau <b>${lv}</b>${cum() ? " en lager" : ""}.` : "Kies een oefening om te beginnen.");
     hero.innerHTML = `
       <h1>Oefening baart kunst 👌🏼</h1>
-      <p class="muted">${due
-        ? `Je hebt <b>${due}</b> ${due === 1 ? "woord" : "woorden"} om te herhalen.`
-        : "Kies een oefening om te beginnen."}</p>`;
+      <p class="muted">${sub}</p>`;
     screen.appendChild(hero);
 
     const grid = el("section", "grid");
@@ -94,48 +97,84 @@
     screen.appendChild(grid);
   };
 
+  // Current course-level scope for every exercise.
+  function lvl() { return Store.settings.level; }
+  function cum() { return !!Store.settings.levelCumulative; }
+
   function onMode(key) {
     const count = Store.settings.count;
+    const L = lvl(), C = cum();
     switch (key) {
       case "verbs": return render.tense();
-      case "levels": return render.levels();
+      case "levels": return render.topics(L || 1, render.menu);
       case "match": return render.match();
       case "dehet":
-        return startRound(Engine.sample(Engine.articleQuestions(), count), { title: "De / Het" });
+        return startRound(Engine.sample(Engine.articleQuestions(L, C), count), { title: "De / Het" });
       case "vocab":
-        return startRound(Engine.sample(Engine.vocabQuestions(), count), { title: "Woordenschat" });
+        return startRound(Engine.sample(Engine.vocabQuestions(L, C), count), { title: "Woordenschat" });
       case "listen":
-        return startRound(Engine.sample(Engine.listenQuestions(), count), { title: "Luisteren" });
+        return startRound(Engine.sample(Engine.listenQuestions(L, C), count), { title: "Luisteren" });
       case "order":
-        return startRound(Engine.sample(Engine.orderQuestions(), count), { title: "Zinsbouw" });
+        return startRound(Engine.sample(Engine.orderQuestions(L, C), count), { title: "Zinsbouw" });
       case "random":
-        return startRound(Engine.sample(Engine.allQuestions(), count), { title: "Verrassingsronde" });
+        return startRound(Engine.sample(Engine.allQuestions(L, C), count), { title: "Verrassingsronde" });
       case "review": {
         const qs = Engine.reviewQuestions(Store.reviewIds()).slice(0, count);
         if (!qs.length) return toast("Geen fouten om te herhalen — goed bezig!", "🌟");
         return startRound(qs, { title: "Herhalen", hearts: 5 });
       }
       case "blitz":
-        return startRound(Engine.sample(Engine.allQuestions(), 200),
-          { title: "Blitz", blitz: true, seconds: 60 });
+        return startRound(Engine.sample(Engine.allQuestions(L, C), 200),
+          { title: "Blitz", blitz: true, seconds: 60, refill: () => Engine.sample(Engine.allQuestions(L, C), 100) });
     }
   }
+
+  // ---------- level gate ----------
+  function refreshLevelChip() {
+    const chip = $("level-chip");
+    if (!chip) return;
+    const l = Store.settings.level;
+    if (l) { chip.textContent = "Niveau " + l; chip.classList.remove("hidden"); }
+    else chip.classList.add("hidden");
+  }
+
+  render.levelGate = function (fromMenu) {
+    clear();
+    if (fromMenu) screen.appendChild(backBar("Kies je niveau"));
+    const hero = el("section", "hero");
+    hero.innerHTML = `
+      <h1>Welk niveau doe je nu?</h1>
+      <p class="muted">Je oefent met de stof van jouw cursusniveau.</p>`;
+    screen.appendChild(hero);
+    const grid = el("section", "grid");
+    for (let i = 1; i <= 6; i++) {
+      const c = el("button", "card level-card" + (Store.settings.level === i ? " current" : ""), `
+        <span class="card-emoji">📘</span>
+        <span class="card-title">Niveau ${i}</span>`);
+      c.addEventListener("click", () => {
+        Store.setSetting("level", i);
+        refreshLevelChip();
+        render.menu();
+      });
+      grid.appendChild(c);
+    }
+    screen.appendChild(grid);
+  };
 
   render.tense = function () {
     clear();
     screen.appendChild(backBar("Werkwoorden"));
-    const opts = [
-      { id: 1, label: "Tegenwoordige tijd", lvl: "Level 1" },
-      { id: 2, label: "Perfectum", lvl: "Level 2" },
-      { id: 3, label: "Imperfectum", lvl: "Level 3" },
-      { id: 13, label: "Plusquamperfectum", lvl: "Level 5" },
-    ];
+    const labels = {
+      1: "Tegenwoordige tijd", 2: "Perfectum", 3: "Imperfectum", 13: "Plusquamperfectum",
+    };
+    const available = Engine.verbTensesForLevel(lvl(), cum());
+    const opts = available.map((id) => ({ id, label: labels[id], lvl: "Niveau " + Engine.VERB_LEVEL[id] }));
     const box = el("section", "panel");
     box.innerHTML = `<h2>Kies de tijden</h2>`;
     const list = el("div", "checklist");
-    opts.forEach((o, i) => {
+    opts.forEach((o) => {
       const row = el("label", "check-row", `
-        <input type="checkbox" value="${o.id}" ${i === 0 ? "checked" : ""}>
+        <input type="checkbox" value="${o.id}" checked>
         <span>${o.label}</span><em>${o.lvl}</em>`);
       list.appendChild(row);
     });
@@ -151,26 +190,16 @@
     screen.appendChild(box);
   };
 
-  render.levels = function () {
+  render.topics = function (level, backTarget) {
     clear();
-    screen.appendChild(backBar("Per niveau"));
+    screen.appendChild(backBar(`Niveau ${level}`, backTarget || render.menu));
     const grid = el("section", "grid small");
-    Object.keys(Engine.LEVELS).forEach((lv) => {
-      const c = el("button", "card", `
-        <span class="card-emoji">📘</span>
-        <span class="card-title">Level ${lv}</span>
-        <span class="card-sub">${Engine.LEVELS[lv].length} onderdelen</span>`);
-      c.addEventListener("click", () => render.topics(lv));
-      grid.appendChild(c);
-    });
-    screen.appendChild(grid);
-  };
-
-  render.topics = function (lv) {
-    clear();
-    screen.appendChild(backBar(`Level ${lv}`, render.levels));
-    const grid = el("section", "grid small");
-    (Engine.LEVELS[lv] || []).forEach((id) => {
+    const ids = Engine.topicsForLevel(level);
+    if (!ids.length) {
+      grid.appendChild(el("p", "muted center",
+        "Nog geen grammatica-onderdelen voor dit niveau."));
+    }
+    ids.forEach((id) => {
       const c = el("button", "card", `
         <span class="card-title">${esc(Engine.LABELS[id] || "Onderdeel " + id)}</span>`);
       c.addEventListener("click", () => {
@@ -206,7 +235,7 @@
       mistakes: [], mistakeQs: [], correct: 0, answered: 0,
       combo: 0, bestCombo: 0,
       title: opts.title || "Oefenen",
-      blitz: !!opts.blitz, seconds: opts.seconds || 0,
+      blitz: !!opts.blitz, seconds: opts.seconds || 0, refill: opts.refill || null,
       hintUsed: false, lifeLost: false,
       timeLeft: opts.seconds || 0, timer: null, startTime: Date.now(),
     };
@@ -276,7 +305,8 @@
     if (!round) return;
     if (!round.blitz && round.idx >= round.questions.length) return endRound();
     if (round.blitz && round.idx >= round.questions.length) {
-      round.questions = round.questions.concat(Engine.sample(Engine.allQuestions(), 100));
+      const more = round.refill ? round.refill() : Engine.sample(Engine.allQuestions(), 100);
+      round.questions = round.questions.concat(more);
     }
     round.hintUsed = false; round.lifeLost = false;
     round.finalized = false; round.dirty = false;
@@ -710,6 +740,11 @@
               { auto: "Auto", light: "Licht", dark: "Donker" }[t]}</button>`).join("")}
         </div>
       </div>
+      <div class="toggle-row">
+        <span>Niveau${s.level ? " (nu " + s.level + ")" : ""}</span>
+        <button class="btn ghost mini" id="change-level">Wijzigen</button>
+      </div>
+      ${toggle("levelCumulative", "Ook lagere niveaus oefenen")}
       ${toggle("sound", "Geluidseffecten")}
       ${toggle("tts", "Uitspraak (stem)")}
       ${toggle("translation", "Vertaling tonen")}
@@ -726,6 +761,7 @@
       $("count-val").textContent = range.value;
       Store.setSetting("count", Number(range.value));
     });
+    $("change-level").addEventListener("click", () => { closeDrawer(); render.levelGate(true); });
     body.querySelectorAll("[data-theme]").forEach((b) =>
       b.addEventListener("click", () => {
         Store.setSetting("theme", b.dataset.theme);
@@ -750,6 +786,7 @@
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
 
     $("brand").addEventListener("click", () => { if (round && round.timer) clearInterval(round.timer); round = null; render.menu(); });
+    $("level-chip").addEventListener("click", () => { if (round && round.timer) clearInterval(round.timer); round = null; render.levelGate(true); });
     $("settings-btn").addEventListener("click", openDrawer);
     $("drawer-close").addEventListener("click", closeDrawer);
     $("drawer-backdrop").addEventListener("click", closeDrawer);
@@ -766,7 +803,9 @@
       }
     });
 
-    render.menu();
+    refreshLevelChip();
+    if (Store.settings.level == null) render.levelGate();
+    else render.menu();
   }
 
   if (document.readyState === "loading")

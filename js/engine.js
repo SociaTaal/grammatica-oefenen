@@ -23,7 +23,25 @@
     3: [7, 8, 21],
     4: [9, 10, 22, 24],
     5: [11, 12, 23],
+    6: [],
   };
+  // Which course level each verb tense belongs to.
+  const VERB_LEVEL = { 1: 1, 2: 2, 3: 3, 13: 5 };
+  // Reverse map: grammar topic id -> course level.
+  const TOPIC_LEVEL = {};
+  Object.keys(LEVELS).forEach((lv) =>
+    LEVELS[lv].forEach((id) => { TOPIC_LEVEL[id] = Number(lv); }));
+
+  // Level matching. Untagged content (level == null) is available everywhere,
+  // so the app keeps working until words get per-level tags.
+  function levelOk(lv, level, cumulative) {
+    if (lv == null || level == null) return true;
+    return cumulative ? lv <= level : lv === level;
+  }
+  function filt(items, level, cumulative) {
+    if (level == null) return items;
+    return items.filter((q) => levelOk(q.level, level, cumulative));
+  }
 
   // ---- text utilities ----
   function sanitize(text) {
@@ -64,6 +82,9 @@
   Object.keys(TOPICS).forEach((tk) => {
     const topic = Number(tk);
     const arr = TOPICS[tk] || [];
+    const topicLevel = VERB_TOPICS.includes(topic)
+      ? VERB_LEVEL[topic]
+      : (TOPIC_LEVEL[topic] != null ? TOPIC_LEVEL[topic] : null);
     arr.forEach((q, i) => {
       if (!q || !q.answer) return;
       const tense = q.tense || TOPIC_TO_TENSE[topic] || null;
@@ -71,14 +92,14 @@
         const tokens = String(q.sentence).split("/").map((t) => t.trim()).filter(Boolean);
         if (tokens.length < 2) return;
         pool.push({
-          id: `order:${topic}:${i}`, type: "order", topic,
+          id: `order:${topic}:${i}`, type: "order", topic, level: topicLevel,
           tokens, answer: q.answer, translation: q.translation || "",
           infinitive: "zinsbouw", tense: null,
           speak: variants(q.answer)[0] ? String(q.answer).split("/")[0].trim() : "",
         });
       } else {
         pool.push({
-          id: `fill:${topic}:${i}`, type: "fill", topic,
+          id: `fill:${topic}:${i}`, type: "fill", topic, level: topicLevel,
           prompt: q.sentence || "", answer: q.answer,
           translation: q.translation || "",
           infinitive: q.infinitive || (LABELS[topic] || ""),
@@ -90,7 +111,7 @@
         if (VERB_TOPICS.includes(topic)) {
           const full = completeSentence(q.sentence || "", q.answer);
           pool.push({
-            id: `listen:${topic}:${i}`, type: "listen", topic,
+            id: `listen:${topic}:${i}`, type: "listen", topic, level: topicLevel,
             prompt: "Typ de zin die je hoort.", answer: full,
             translation: q.translation || "", infinitive: "luisteren",
             tense: null, speak: full, isSentence: true,
@@ -104,7 +125,7 @@
   DEHET.forEach((w, i) => {
     if (!w || !w.word || !w.article) return;
     pool.push({
-      id: `article:0:${i}`, type: "article", topic: "dehet",
+      id: `article:0:${i}`, type: "article", topic: "dehet", level: w.level == null ? null : Number(w.level),
       word: w.word, article: w.article, translation: w.translation || "",
       infinitive: "de / het", tense: null, speak: `${w.article} ${w.word}`,
     });
@@ -114,18 +135,19 @@
     const out = [];
     DEHET.forEach((w, i) => {
       if (!w || !w.word || !w.translation) return;
+      const lv = w.level == null ? null : Number(w.level);
       // Typed vocab: show the English meaning, type the Dutch word.
       // Accept the word on its own or with its article (e.g. "boom" or "de boom").
       const answer = `${w.word} / ${w.article} ${w.word}`;
       out.push({
-        id: `vocab:${i}`, type: "vocab", topic: "vocab",
+        id: `vocab:${i}`, type: "vocab", topic: "vocab", level: lv,
         prompt: `Schrijf het Nederlandse woord voor “${w.translation}”.`,
         answer, infinitive: "woordenschat", tense: null,
         translation: "", speak: w.word,
       });
       // listening: speak word, type it
       out.push({
-        id: `listen:vocab:${i}`, type: "listen", topic: "vocab",
+        id: `listen:vocab:${i}`, type: "listen", topic: "vocab", level: lv,
         prompt: "Typ het woord dat je hoort.", answer: w.word,
         translation: w.translation || "", infinitive: "luisteren",
         tense: null, speak: w.word, isSentence: false,
@@ -150,27 +172,39 @@
     if (t === 25) return pool.filter((q) => q.type === "order");
     return pool.filter((q) => q.type === "fill" && Number(q.topic) === t);
   }
-  function articleQuestions() { return pool.filter((q) => q.type === "article"); }
-  function vocabQuestions() { return pool.filter((q) => q.type === "vocab"); }
-  function listenQuestions() { return pool.filter((q) => q.type === "listen"); }
-  function orderQuestions() { return pool.filter((q) => q.type === "order"); }
-  function allQuestions() { return pool.slice(); }
+  function articleQuestions(level, cum) { return filt(pool.filter((q) => q.type === "article"), level, cum); }
+  function vocabQuestions(level, cum) { return filt(pool.filter((q) => q.type === "vocab"), level, cum); }
+  function listenQuestions(level, cum) { return filt(pool.filter((q) => q.type === "listen"), level, cum); }
+  function orderQuestions(level, cum) { return filt(pool.filter((q) => q.type === "order"), level, cum); }
+  function allQuestions(level, cum) { return filt(pool.slice(), level, cum); }
 
   function reviewQuestions(ids) {
     return ids.map((id) => byId[id]).filter(Boolean);
   }
 
-  // Build a matching board: n pairs of NL <-> EN.
-  function matchBoard(n) {
-    const words = sample(DEHET.filter((w) => w.word && w.translation), n);
-    return words.map((w, i) => ({ key: i, nl: w.word, en: w.translation, article: w.article }));
+  // Grammar topics that belong to a course level (for the "Per niveau" list).
+  function topicsForLevel(level) { return (LEVELS[level] || []).slice(); }
+
+  // Verb tenses available at a level (ids into topicSentences). Falls back to all.
+  function verbTensesForLevel(level, cum) {
+    if (level == null) return VERB_TOPICS.slice();
+    const ids = VERB_TOPICS.filter((id) => levelOk(VERB_LEVEL[id], level, cum));
+    return ids.length ? ids : VERB_TOPICS.slice();
+  }
+
+  // Build a matching board: n pairs of NL <-> EN, scoped to the level.
+  function matchBoard(n, level, cum) {
+    let words = DEHET.filter((w) => w.word && w.translation);
+    if (level != null) words = words.filter((w) => levelOk(w.level == null ? null : Number(w.level), level, cum));
+    return sample(words, n).map((w, i) => ({ key: i, nl: w.word, en: w.translation, article: w.article }));
   }
 
   const Engine = {
-    LABELS, LEVELS, VERB_TOPICS, VERB_TENSE_LABELS, TOPIC_TO_TENSE,
+    LABELS, LEVELS, VERB_TOPICS, VERB_LEVEL, VERB_TENSE_LABELS, TOPIC_TO_TENSE,
     sanitize, checkText, variants, shuffle, sample,
     verbQuestions, topicQuestions, articleQuestions, vocabQuestions,
     listenQuestions, orderQuestions, allQuestions, reviewQuestions, matchBoard,
+    topicsForLevel, verbTensesForLevel,
     questionById: (id) => byId[id],
     stats: { total: pool.length },
   };
