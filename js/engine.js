@@ -96,7 +96,9 @@
         const tokens = String(q.sentence).split("/").map((t) => t.trim()).filter(Boolean);
         if (tokens.length < 2) return;
         pool.push({
-          id: `order:${topic}:${i}`, type: "order", topic, level: topicLevel,
+          // Zinsbouw is a skill practised across the whole course, so it is
+          // level-agnostic (level: null) and available at every level.
+          id: `order:${topic}:${i}`, type: "order", topic, level: null,
           tokens, answer: q.answer, translation: q.translation || "",
           infinitive: "zinsbouw", tense: null,
           speak: variants(q.answer)[0] ? String(q.answer).split("/")[0].trim() : "",
@@ -179,7 +181,7 @@
   function articleQuestions(level, cum) { return filt(pool.filter((q) => q.type === "article"), level, cum); }
   function vocabQuestions(level, cum) { return filt(pool.filter((q) => q.type === "vocab"), level, cum); }
   function listenQuestions(level, cum) { return filt(pool.filter((q) => q.type === "listen"), level, cum); }
-  function orderQuestions(level, cum) { return filt(pool.filter((q) => q.type === "order"), level, cum); }
+  function orderQuestions() { return pool.filter((q) => q.type === "order"); } // level-agnostic
   function allQuestions(level, cum) { return filt(pool.slice(), level, cum); }
 
   function reviewQuestions(ids) {
