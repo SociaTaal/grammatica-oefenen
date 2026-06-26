@@ -138,6 +138,8 @@
     else chip.classList.add("hidden");
   }
 
+  const LEVEL_CEFR = { 1: "A1-", 2: "A1+", 3: "A2-", 4: "A2+", 5: "B1-", 6: "B1+" };
+
   render.levelGate = function (fromMenu) {
     clear();
     if (fromMenu) screen.appendChild(backBar("Kies je niveau"));
@@ -150,7 +152,8 @@
     for (let i = 1; i <= 6; i++) {
       const c = el("button", "card level-card" + (Store.settings.level === i ? " current" : ""), `
         <span class="card-emoji">📘</span>
-        <span class="card-title">Niveau ${i}</span>`);
+        <span class="card-title">Nederlands Level ${i}</span>
+        <span class="card-sub">(${LEVEL_CEFR[i]})</span>`);
       c.addEventListener("click", () => {
         Store.setSetting("level", i);
         refreshLevelChip();
