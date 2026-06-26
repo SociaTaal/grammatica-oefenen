@@ -8,7 +8,7 @@
 
   const DEFAULTS = {
     settings: {
-      theme: "auto",        // 'auto' | 'light' | 'dark'
+      theme: "light",       // 'auto' | 'light' | 'dark' — default light
       sound: true,
       tts: true,
       translation: true,
