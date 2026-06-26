@@ -172,7 +172,9 @@
     const labels = {
       1: "Tegenwoordige tijd", 2: "Perfectum", 3: "Imperfectum", 13: "Plusquamperfectum",
     };
-    const available = Engine.verbTensesForLevel(lvl(), cum());
+    // Verb tenses are always cumulative: every tense up to the current level
+    // stays visible (e.g. level 3 shows presens, perfectum and imperfectum).
+    const available = Engine.verbTensesForLevel(lvl(), true);
     const opts = available.map((id) => ({ id, label: labels[id], lvl: "Niveau " + Engine.VERB_LEVEL[id] }));
     const box = el("section", "panel");
     box.innerHTML = `<h2>Kies de tijden</h2>`;
