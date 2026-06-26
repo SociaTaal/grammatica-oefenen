@@ -73,7 +73,7 @@
     const lv = Store.settings.level;
     const sub = due
       ? `Je hebt <b>${due}</b> ${due === 1 ? "woord" : "woorden"} om te herhalen.`
-      : (lv ? `Je oefent op niveau <b>${lv}</b>${cum() ? " en lager" : ""}.` : "Kies een oefening om te beginnen.");
+      : (lv ? `Je oefent op <b>${levelLabel(lv)}</b>${cum() ? " en lager" : ""}.` : "Kies een oefening om te beginnen.");
     hero.innerHTML = `
       <h1>Oefening baart kunst 👌🏼</h1>
       <p class="muted">${sub}</p>`;
@@ -130,11 +130,13 @@
   }
 
   // ---------- level gate ----------
+  function levelLabel(l) { return l ? `Level ${l} (${LEVEL_CEFR[l]})` : ""; }
+
   function refreshLevelChip() {
     const chip = $("level-chip");
     if (!chip) return;
     const l = Store.settings.level;
-    if (l) { chip.textContent = "Niveau " + l; chip.classList.remove("hidden"); }
+    if (l) { chip.textContent = levelLabel(l); chip.classList.remove("hidden"); }
     else chip.classList.add("hidden");
   }
 
@@ -744,7 +746,7 @@
         </div>
       </div>
       <div class="toggle-row">
-        <span>Niveau${s.level ? " (nu " + s.level + ")" : ""}</span>
+        <span>Niveau${s.level ? " — " + levelLabel(s.level) : ""}</span>
         <button class="btn ghost mini" id="change-level">Wijzigen</button>
       </div>
       ${toggle("levelCumulative", "Ook lagere niveaus oefenen")}
