@@ -32,15 +32,19 @@
   Object.keys(LEVELS).forEach((lv) =>
     LEVELS[lv].forEach((id) => { TOPIC_LEVEL[id] = Number(lv); }));
 
-  // Level matching. Untagged content (level == null) is available everywhere,
-  // so the app keeps working until words get per-level tags.
-  function levelOk(lv, level, cumulative) {
-    if (lv == null || level == null) return true;
+  // Does a tagged item belong to the chosen level scope?
+  function matches(lv, level, cumulative) {
+    if (lv == null) return false;
     return cumulative ? lv <= level : lv === level;
   }
+  // Scope a list to a level. If the level has tagged items, show exactly those.
+  // If it has none yet (not authored), fall back to the untagged legacy pool so
+  // that level still works until its content is tagged.
   function filt(items, level, cumulative) {
     if (level == null) return items;
-    return items.filter((q) => levelOk(q.level, level, cumulative));
+    const tagged = items.filter((q) => matches(q.level, level, cumulative));
+    if (tagged.length) return tagged;
+    return items.filter((q) => q.level == null);
   }
 
   // ---- text utilities ----
@@ -188,14 +192,18 @@
   // Verb tenses available at a level (ids into topicSentences). Falls back to all.
   function verbTensesForLevel(level, cum) {
     if (level == null) return VERB_TOPICS.slice();
-    const ids = VERB_TOPICS.filter((id) => levelOk(VERB_LEVEL[id], level, cum));
+    const ids = VERB_TOPICS.filter((id) => matches(VERB_LEVEL[id], level, cum));
     return ids.length ? ids : VERB_TOPICS.slice();
   }
 
   // Build a matching board: n pairs of NL <-> EN, scoped to the level.
   function matchBoard(n, level, cum) {
     let words = DEHET.filter((w) => w.word && w.translation);
-    if (level != null) words = words.filter((w) => levelOk(w.level == null ? null : Number(w.level), level, cum));
+    if (level != null) {
+      const lvOf = (w) => (w.level == null ? null : Number(w.level));
+      const tagged = words.filter((w) => matches(lvOf(w), level, cum));
+      words = tagged.length ? tagged : words.filter((w) => w.level == null);
+    }
     return sample(words, n).map((w, i) => ({ key: i, nl: w.word, en: w.translation, article: w.article }));
   }
 
