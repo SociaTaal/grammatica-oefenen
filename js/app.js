@@ -54,10 +54,10 @@
     { key: "verbs", emoji: "🧩", title: "Werkwoorden", sub: "Vervoeg in 4 tijden" },
     { key: "dehet", emoji: "⚖️", title: "De / Het", sub: "Lidwoorden trainen" },
     { key: "vocab", emoji: "🔤", title: "Woordenschat", sub: "Typ het Nederlandse woord" },
+    { key: "levels", emoji: "📈", title: "Grammatica", sub: "Oefen per onderdeel" },
     { key: "listen", emoji: "🎧", title: "Luisteren", sub: "Typ wat je hoort" },
     { key: "order", emoji: "🔀", title: "Zinsbouw", sub: "Zet de zin op volgorde" },
     { key: "match", emoji: "🧠", title: "Memory", sub: "Koppel woordparen" },
-    { key: "levels", emoji: "📈", title: "Per onderdeel", sub: "Grammatica van je niveau" },
     { key: "review", emoji: "♻️", title: "Herhalen", sub: "Jouw fouten opnieuw" },
     { key: "random", emoji: "🎲", title: "Verrassing", sub: "Alles door elkaar" },
   ];
