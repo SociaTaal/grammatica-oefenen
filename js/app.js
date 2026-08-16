@@ -69,14 +69,26 @@
     refreshLevelChip();
     const hero = el("section", "hero");
     const due = Store.reviewIds().length;
-    const lv = Store.settings.level;
     const sub = due
       ? `Je hebt <b>${due}</b> ${due === 1 ? "woord" : "woorden"} om te herhalen.`
-      : (lv ? `Je oefent op <b>${levelLabel(lv)}</b>${cum() ? " en lager" : ""}.` : "Kies een oefening om te beginnen.");
+      : "Kies je niveau en een oefening.";
     hero.innerHTML = `
       <h1>Oefening baart kunst 👌🏼</h1>
       <p class="muted">${sub}</p>`;
     screen.appendChild(hero);
+
+    // Prominent level selector right under the heading.
+    const lvlSel = el("section", "level-select");
+    lvlSel.appendChild(el("span", "level-select-label", "Jouw niveau"));
+    const pills = el("div", "level-pills");
+    for (let i = 1; i <= 6; i++) {
+      const b = el("button", "level-pill" + (Store.settings.level === i ? " active" : ""),
+        `<b>Level ${i}</b><span>${LEVEL_CEFR[i]}</span>`);
+      b.addEventListener("click", () => { Store.setSetting("level", i); refreshLevelChip(); render.menu(); });
+      pills.appendChild(b);
+    }
+    lvlSel.appendChild(pills);
+    screen.appendChild(lvlSel);
 
     const grid = el("section", "grid");
     MODES.forEach((m) => {
