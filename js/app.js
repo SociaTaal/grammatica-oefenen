@@ -60,7 +60,6 @@
     { key: "levels", emoji: "📈", title: "Per onderdeel", sub: "Grammatica van je niveau" },
     { key: "review", emoji: "♻️", title: "Herhalen", sub: "Jouw fouten opnieuw" },
     { key: "random", emoji: "🎲", title: "Verrassing", sub: "Alles door elkaar" },
-    { key: "blitz", emoji: "⚡", title: "Blitz", sub: "60 sec, zo veel mogelijk" },
   ];
 
   const render = {};
@@ -123,9 +122,6 @@
         if (!qs.length) return toast("Geen fouten om te herhalen — goed bezig!", "🌟");
         return startRound(qs, { title: "Herhalen", hearts: 5 });
       }
-      case "blitz":
-        return startRound(Engine.sample(Engine.allQuestions(L, C), 200),
-          { title: "Blitz", blitz: true, seconds: 60, refill: () => Engine.sample(Engine.allQuestions(L, C), 100) });
     }
   }
 
