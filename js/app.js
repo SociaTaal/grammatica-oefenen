@@ -188,7 +188,7 @@
     start.addEventListener("click", () => {
       const ids = [...list.querySelectorAll("input:checked")].map((c) => Number(c.value));
       if (!ids.length) return toast("Kies minstens één tijd", "👆");
-      const qs = Engine.sample(Engine.verbQuestions(ids), Store.settings.count);
+      const qs = Engine.sample(Engine.verbQuestions(ids, lvl()), Store.settings.count);
       startRound(qs, { title: "Werkwoorden" });
     });
     box.appendChild(start);

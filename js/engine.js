@@ -92,6 +92,11 @@
     arr.forEach((q, i) => {
       if (!q || !q.answer) return;
       const tense = q.tense || TOPIC_TO_TENSE[topic] || null;
+      // Verb sentences may carry a per-question level; otherwise fall back to
+      // the tense's introduction level. Grammar topics use the topic's level.
+      const qLevel = VERB_TOPICS.includes(topic)
+        ? (q.level != null ? Number(q.level) : VERB_LEVEL[topic])
+        : topicLevel;
       if (topic === 25) {
         const tokens = String(q.sentence).split("/").map((t) => t.trim()).filter(Boolean);
         if (tokens.length < 2) return;
@@ -105,7 +110,7 @@
         });
       } else {
         pool.push({
-          id: `fill:${topic}:${i}`, type: "fill", topic, level: topicLevel,
+          id: `fill:${topic}:${i}`, type: "fill", topic, level: qLevel,
           prompt: q.sentence || "", answer: q.answer,
           translation: q.translation || "",
           infinitive: q.infinitive || (LABELS[topic] || ""),
@@ -117,7 +122,7 @@
         if (VERB_TOPICS.includes(topic)) {
           const full = completeSentence(q.sentence || "", q.answer);
           pool.push({
-            id: `listen:${topic}:${i}`, type: "listen", topic, level: topicLevel,
+            id: `listen:${topic}:${i}`, type: "listen", topic, level: qLevel,
             prompt: "Typ de zin die je hoort.", answer: full,
             translation: q.translation || "", infinitive: "luisteren",
             tense: null, speak: full, isSentence: true,
@@ -169,9 +174,13 @@
   pool.forEach((q) => { byId[q.id] = q; });
 
   // ---- public selectors ----
-  function verbQuestions(tenseTopics) {
+  // Verb practice is cumulative by the question's level: at the chosen level
+  // you get every sentence of the picked tense(s) whose level <= that level
+  // (e.g. a level-3 perfectum sentence only appears from level 3 up).
+  function verbQuestions(tenseTopics, level) {
     const set = new Set(tenseTopics.map(Number));
-    return pool.filter((q) => q.type === "fill" && set.has(Number(q.topic)));
+    return pool.filter((q) => q.type === "fill" && set.has(Number(q.topic))
+      && (level == null || q.level == null || q.level <= level));
   }
   function topicQuestions(topic) {
     const t = Number(topic);
