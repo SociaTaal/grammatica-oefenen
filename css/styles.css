@@ -79,13 +79,6 @@ html[data-theme="dark"] .topbar { background: linear-gradient(var(--bg), rgba(18
 .streak { display: flex; align-items: center; gap: 3px; font-weight: 800; }
 .topbar-spacer { flex: 1; }
 .topbar-actions { display: flex; gap: 6px; }
-.level-chip {
-  border: 1px solid var(--brand); background: rgba(31, 158, 140, 0.12); color: var(--brand);
-  font-family: var(--display); font-weight: 700; font-size: 0.85rem;
-  padding: 7px 12px; border-radius: 99px; cursor: pointer; white-space: nowrap;
-  transition: background .2s, transform .12s;
-}
-.level-chip:hover { transform: translateY(-1px); background: rgba(31, 158, 140, 0.2); }
 
 .icon-btn {
   border: 1px solid var(--line); background: var(--bg-2); color: var(--text);

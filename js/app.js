@@ -66,7 +66,6 @@
 
   render.menu = function () {
     clear();
-    refreshLevelChip();
     const hero = el("section", "hero");
     const due = Store.reviewIds().length;
     const sub = due
@@ -84,7 +83,7 @@
     for (let i = 1; i <= 6; i++) {
       const b = el("button", "level-pill" + (Store.settings.level === i ? " active" : ""),
         `<b>Level ${i}</b><span>${LEVEL_CEFR[i]}</span>`);
-      b.addEventListener("click", () => { Store.setSetting("level", i); refreshLevelChip(); render.menu(); });
+      b.addEventListener("click", () => { Store.setSetting("level", i); render.menu(); });
       pills.appendChild(b);
     }
     lvlSel.appendChild(pills);
@@ -140,14 +139,6 @@
   // ---------- level gate ----------
   function levelLabel(l) { return l ? `Level ${l} (${LEVEL_CEFR[l]})` : ""; }
 
-  function refreshLevelChip() {
-    const chip = $("level-chip");
-    if (!chip) return;
-    const l = Store.settings.level;
-    if (l) { chip.textContent = levelLabel(l); chip.classList.remove("hidden"); }
-    else chip.classList.add("hidden");
-  }
-
   const LEVEL_CEFR = { 1: "A1-", 2: "A1+", 3: "A2-", 4: "A2+", 5: "B1-", 6: "B1+" };
 
   render.levelGate = function (fromMenu) {
@@ -166,7 +157,6 @@
         <span class="card-sub">(${LEVEL_CEFR[i]})</span>`);
       c.addEventListener("click", () => {
         Store.setSetting("level", i);
-        refreshLevelChip();
         render.menu();
       });
       grid.appendChild(c);
@@ -801,7 +791,6 @@
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
 
     $("brand").addEventListener("click", () => { if (round && round.timer) clearInterval(round.timer); round = null; render.menu(); });
-    $("level-chip").addEventListener("click", () => { if (round && round.timer) clearInterval(round.timer); round = null; render.levelGate(true); });
     $("settings-btn").addEventListener("click", openDrawer);
     $("drawer-close").addEventListener("click", closeDrawer);
     $("drawer-backdrop").addEventListener("click", closeDrawer);
@@ -818,7 +807,6 @@
       }
     });
 
-    refreshLevelChip();
     if (Store.settings.level == null) render.levelGate();
     else render.menu();
   }
